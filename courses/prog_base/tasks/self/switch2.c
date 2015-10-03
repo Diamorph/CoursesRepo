@@ -6,7 +6,7 @@ int result, num, num1;
 num = 7;
 num = num % 7;
 
-switch (num1) {
+switch (num) {
 case 1:{
     printf("середа",num);
 	break;
