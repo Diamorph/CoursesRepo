@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <math.h>
 
 int main(){
@@ -8,31 +8,31 @@ num1 = num % 7;
 
 switch (num1) {
 case 1:{
-    printf("середа",num);
+    printf("СЃРµСЂРµРґР°",num);
 	break;
 }
 case 2:{
-    printf("четвер", num);
+    printf("С‡РµС‚РІРµСЂ", num);
 	break;
 }
 case 3:{
-    printf("п'ятниця", num);
+    printf("Рї'СЏС‚РЅРёС†СЏ", num);
 	break;
 }
 case 4:{
-    printf("субота", num);
+    printf("СЃСѓР±РѕС‚Р°", num);
 	break;
 }
 case 5:{
-    printf("неділя", num);
+    printf("РЅРµРґС–Р»СЏ", num);
 	break;
 }
 case 6:{
-    printf("понеділок", num);
+    printf("РїРѕРЅРµРґС–Р»РѕРє", num);
 	break;
 }
 case 0:{
-    printf("вівторок", num);
+    printf("РІС–РІС‚РѕСЂРѕРє", num);
 	break; }
 }
 system("pause");
