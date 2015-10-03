@@ -4,7 +4,7 @@
 int main(){
 int result, num, num1;
 num = 7;
-num1 = num % 7;
+num = num % 7;
 
 switch (num1) {
 case 1:{
