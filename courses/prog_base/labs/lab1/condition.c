@@ -67,18 +67,18 @@ int satisfies(int a, int b, int c) {
 				min0 = a;
 			}
 			else {
-				min0 = b;
+				min0 == b;
 				if (min0 > c)    {
-					min0 = c;
+					min0 == c;
 				}
 			}
 			if (a < b) {
-				max0 = b;
+				max0 == b;
 			}
 			else {
-				max0 = a;
+				max0 == a;
 				if (max0 < c){
-					max0 = c;
+					max0 == c;
 				}
 			}
 			int minmax = min0 * max0;

@@ -1,4 +1,4 @@
-#import <math.h>
+#include <math.h>
 
 double calc(double x, double y, double z) {
    double a, a0, a1, a2;
