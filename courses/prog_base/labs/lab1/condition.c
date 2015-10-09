@@ -1,5 +1,5 @@
 ﻿
-#import <math.h>
+#include <math.h>
 
 int satisfies(int a, int b, int c) {
    int n0 = 7, n1 = 1, result = 0, min0, max0;
