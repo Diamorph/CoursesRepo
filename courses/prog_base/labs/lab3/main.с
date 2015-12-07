@@ -1,0 +1,136 @@
+﻿#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <windows.h>
+#include <conio.h>
+
+
+int main()
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    char str[100];
+    char cmd[50];
+    char extra[100] = "";
+    char* words[500];
+    int wordsNum = 0;
+    int check=0;
+    const char *help[]= {" ",
+                           "exit              Exit",
+                           "delete            delete string",
+                           "number            number of words",
+                           "lenght            string length",
+                           "extrastr          print the number of entries of extra string into main string",
+                           "deletespaces      delete spaces",
+                           "reverse           reverse string",
+                           "random            fill string with random letters",
+                           "new               enter new string",
+                           "letters           count letters",
+                           "words             words"};
+    Color();
+    start(str);
+    getcmd(cmd);
+    while(check==0)
+{
+if (strcmp(cmd,"number") == 0){
+    printf("number of words = %d\n",WordCount(str));
+    getcmd(cmd);
+}
+if  (strcmp(cmd,"lenght") == 0){
+    printf("length =  %d\n", dovg(str));
+    getcmd(cmd);
+    }
+
+if (strcmp(cmd,"extrastr") == 0){
+     extrastr(str,extra);
+     getcmd(cmd);
+    }
+if (strcmp(cmd,"delete") == 0){
+    deletestr(str);
+    getcmd(cmd);
+}
+
+if (strcmp(cmd,"deletespaces") == 0){
+    DeleteSpaces(str, extra);
+    getcmd(cmd);
+}
+
+if (strcmp(cmd,"reverse") == 0){
+    flipViceVersa(str);
+    getcmd(cmd);
+}
+
+if (strcmp(cmd,"longestword") == 0){
+    LongestWord(str);
+    getcmd(cmd);
+
+}
+if (strcmp(cmd,"random") == 0){
+    Random(str);
+    getcmd(cmd);
+}
+if (strcmp(cmd,"new")==0){
+    NewStr(str);
+    getcmd(cmd);
+}
+if (strcmp(cmd,"words")==0){
+    Cleanhelp();
+    CleanCons();
+    getWords(str, words, &wordsNum);
+    int y = 3;
+for(int i = 0; i < wordsNum; i++){
+			*(words[i]) = tolower(*(words[i]));
+			JumpTo(30,y++);
+			printf(" %d) ", i + 1);
+			printf("%s\n", words[i]);
+}
+getWords(str, words, &wordsNum);
+    getcmd(cmd);
+}
+if (strcmp(cmd,"letters")==0){
+    int res = letters(str);
+    printf("letters = %d\n", res);
+    getcmd(cmd);
+}
+
+if (strcmp(cmd,"help")==0){
+     Cleanhelp();
+     CleanCons();
+     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+     SetConsoleTextAttribute(hConsole,FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
+        for(int i=1; i<=12; i++){
+            JumpTo(0, 10+i);
+            puts(help[i]);
+}
+     getcmd(cmd);
+}
+if (strcmp(cmd,"doublepower")==0){
+     Cleanhelp();
+     CleanCons();
+     printf("Enter power:");
+     JumpTo(30,4);
+     double pow;
+     scanf("%lf", &pow);
+     double res;
+     res = doublepower(str,pow);
+     JumpTo(30,5);
+     printf("result is : %d", res);
+     getcmd(cmd);
+}
+if (strcmp(cmd,"exit")==0){
+     Cleanhelp();
+        Exit();
+        check=1;
+}
+if  (strcmp(cmd,"exit")!=0 && (strcmp(cmd,"doublepower")!=0) && (strcmp(cmd,"help")!=0) && (strcmp(cmd,"letters")!=0) && (strcmp(cmd,"words")!=0) && (strcmp(cmd,"new")!=0) && (strcmp(cmd,"random") != 0) && (strcmp(cmd,"longestword") != 0) && (strcmp(cmd,"reverse") != 0) && (strcmp(cmd,"deletespaces") != 0) && (strcmp(cmd,"delete") != 0) && (strcmp(cmd,"extrastr") != 0) && (strcmp(cmd,"lenght") != 0) && (strcmp(cmd,"number") != 0)){
+Cleanhelp();
+CleanCons();
+JumpTo(30,3);
+SetConsoleTextAttribute(hConsole,FOREGROUND_RED | FOREGROUND_INTENSITY | BACKGROUND_GREEN );
+printf("ERROR, PLEASE WRITE HELP");
+getcmd(cmd);
+}
+}
+    return 0;
+}
