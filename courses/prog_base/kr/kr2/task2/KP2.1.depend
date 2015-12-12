@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1449917121 source:c:\users\admin\desktop\kp2.1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<limits.h>
+	<float.h>
+	<ctype.h>
+	<windows.h>
+
