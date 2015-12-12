@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1449925184 source:c:\users\admin\desktop\kr1.2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<time.h>
+	<windows.h>
+	<conio.h>
+
