@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1450518073 source:c:\users\admin\desktop\lab4-univer\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<math.h>
+	<string.h>
+	"head.h"
+
+1450514995 c:\users\admin\desktop\lab4-univer\head.h
+
+1450518855 source:c:\users\admin\desktop\lab4-univer\functions.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<math.h>
+	<string.h>
+	"head.h"
+
