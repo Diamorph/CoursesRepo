@@ -6,7 +6,6 @@
 #include <cmocka_pbc.h>
 #include <cmocka.h>
 
-#include "stack.h"
 #include "text.h"
 
 static void create__new__text(void **text){
