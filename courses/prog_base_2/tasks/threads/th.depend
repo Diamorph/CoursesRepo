@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1459100527 source:c:\users\admin\desktop\th\libthread_windows.c
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+
+1459100645 c:\users\admin\desktop\th\thread.h
+
+1459100561 c:\users\admin\desktop\th\mutex.h
+
+1459106488 source:c:\users\admin\desktop\th\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"producer.h"
+	"consumer.h"
+
+1459101423 c:\users\admin\desktop\th\header.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"mutex.h"
+	"thread.h"
+
+1459106787 c:\users\admin\desktop\th\producer.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"mutex.h"
+	"thread.h"
+
+1459106476 c:\users\admin\desktop\th\consumer.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"mutex.h"
+	"thread.h"
+	"producer.h"
+
+1459106996 source:c:\users\admin\desktop\th\producer.c
+	"producer.h"
+
+1459106985 source:c:\users\admin\desktop\th\consumer.c
+	"consumer.h"
+
+1459102590 c:\users\admin\desktop\th\data.h
+	"mutex.h"
+
