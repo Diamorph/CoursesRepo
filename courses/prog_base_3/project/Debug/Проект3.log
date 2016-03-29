@@ -1,4 +1,4 @@
-﻿Сборка начата 29.03.2016 11:32:10.
+﻿Сборка начата 29.03.2016 11:58:47.
      1>Проект "c:\Users\admin\documents\visual studio 2013\Projects\Проект3\Проект3\Проект3.vcxproj" в узле 2 (целевые объекты Build).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Проект3.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
@@ -9,10 +9,10 @@
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(37): warning C4305: аргумент: усечение из "double" к "float"
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(38): warning C4305: аргумент: усечение из "double" к "float"
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.lib" /MACHINE:X86 Debug\main.obj
-         Проект3.vcxproj -> c:\users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.exe
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\Users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\Users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\Users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.lib" /MACHINE:X86 Debug\main.obj
+         Проект3.vcxproj -> c:\Users\admin\documents\visual studio 2013\Projects\Проект3\Debug\Chris Jumper.exe
      1>Сборка проекта "c:\Users\admin\documents\visual studio 2013\Projects\Проект3\Проект3\Проект3.vcxproj" завершена (целевые объекты Build).
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:01.19
+Затраченное время: 00:00:04.20

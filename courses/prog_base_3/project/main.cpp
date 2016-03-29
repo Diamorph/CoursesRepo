@@ -3,7 +3,7 @@
 using namespace sf;
 int main()
 {
-	RenderWindow window(sf::VideoMode(640, 480), "Lesson 5. kychka-pc.ru");
+	RenderWindow window(sf::VideoMode(640, 480), "Chris Jumper");
 
 
 
