@@ -1,99 +1,45 @@
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
-/*
-class Animation
-{
-public:
-    std::vector<IncRect> frames, frames_flip;
-    float currentFrame, speed;
-    bool flip, isPlaying;
-    Sprite sprite;
-
-
-
-
-};*/
-
-
-
 int main()
 {
-    RenderWindow window( VideoMode(200,200), "Test!");
-    CircleShape MyCircle(100.f);
-    MyCircle.setFillColor(Color::Green);
+	RenderWindow window(sf::VideoMode(640, 480), "Lesson 5. kychka-pc.ru");
 
-    Texture t;
-    t.loadFromFile("fang.png");
-    float currentFrame = 0;
 
-    Sprite s;
-    s.setTexture(t);
-    s.setTextureRect( IntRect(0,244,40,55));
-    s.setPosition(50,100);
 
-    Clock clock;
+	Texture herotexture;
+	herotexture.loadFromFile("images/hero.png");
 
-    while(window.isOpen())
-    {
-        float time = clock.getElapsedTime().asMicroseconds();
-        clock.restart();
-        time = time/800;
+	Sprite herosprite;
+	herosprite.setTexture(herotexture);
+	herosprite.setTextureRect(IntRect(0, 192, 96, 96));//получили нужный нам пр€моугольник с котом
+	herosprite.setPosition(250, 250); //выводим спрайт в позицию x y 
 
-        Event event;
-        while (window.pollEvent(event))
-        {
-            if(event.type == Event::Closed)
-            window.close();
-        }
 
-        if( Keyboard::isKeyPressed(Keyboard::Left)){
-            s.move(-0.1*time,0);
-            currentFrame += 0.005*time;
-            if (currentFrame > 6) currentFrame -=6;
 
-            s.setTextureRect(IntRect(40*int(currentFrame)+40,244,-40,50));
-        }
+	while (window.isOpen())
+	{
 
-         if( Keyboard::isKeyPressed(Keyboard::Right)){
-            s.move(0.1*time,0);
-            currentFrame += 0.005*time;
-            if (currentFrame > 6) currentFrame -=6;
 
-            s.setTextureRect(IntRect(40*int(currentFrame),244,40,50));
-        }
-        if( Keyboard::isKeyPressed(Keyboard::Up)){
-            s.move(0,-0.1);
-        }
-        if( Keyboard::isKeyPressed(Keyboard::Down)){
-            s.move(0,0.1);
-        }
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
 
-        window.clear(Color::White);
-        window.draw(s);
-        window.display();
-    }
-    return 0;
-    /*
-    sf::RenderWindow win(sf::VideoMode(200, 200), "SFML Test");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+		/*if (Keyboard::isKeyPressed(Keyboard::Left)) { herosprite.move(-0.1, 0); } //перва€ координата ’ отрицательна =>идЄм влево
+		if (Keyboard::isKeyPressed(Keyboard::Right)) { herosprite.move(0.1, 0); } //перва€ координата ’ положительна =>идЄм вправо
+		if (Keyboard::isKeyPressed(Keyboard::Up)) { herosprite.move(0, -0.1); } //втора€ координата (”) отрицательна =>идЄм вверх (вспоминаем из предыдущих уроков почему именно вверх, а не вниз)
+		if (Keyboard::isKeyPressed(Keyboard::Down)) { herosprite.move(0, 0.1); } //втора€ координата (”) положительна =>идЄм вниз (если не пон€тно почему именно вниз - смотрим предыдущие уроки)*/
+		if (Keyboard::isKeyPressed(Keyboard::Left)) { herosprite.move(-0.1, 0); herosprite.setTextureRect(IntRect(0, 96, 96, 96)); } //координата Y, на которой герой изображен идущим влево равна 96
+		if (Keyboard::isKeyPressed(Keyboard::Right)) { herosprite.move(0.1, 0); herosprite.setTextureRect(IntRect(0, 192, 96, 96)); } //координата Y, на которой герой изображен идущем вправо равна 96+96=192
+		if (Keyboard::isKeyPressed(Keyboard::Up)) { herosprite.move(0, -0.1); herosprite.setTextureRect(IntRect(0, 288, 96, 96)); } //координата Y на которой герой изображен идущим вверх равна 288
+		if (Keyboard::isKeyPressed(Keyboard::Down)) { herosprite.move(0, 0.1); herosprite.setTextureRect(IntRect(0, 0, 96, 96)); } //координата 0, это верхн€€ часть изображени€ с героем, от нее и отталкиваемс€ ровными квадратиками по 96. 
+		window.clear();
+		window.draw(herosprite);
+		window.display();
+	}
 
-    while (win.isOpen())
-    {
-        sf::Event event;
-        while (win.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                win.close();
-            }
-        }
-
-        win.clear();
-        win.draw(shape);
-        win.display();
-    }
-
-    return 0;*/
+	return 0;
 }
