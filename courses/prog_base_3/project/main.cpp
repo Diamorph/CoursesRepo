@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream> // подключаем, чтобы посмотреть на врем€ в консоли
 
 using namespace sf;
 int main()
@@ -12,14 +13,19 @@ int main()
 
 	Sprite herosprite;
 	herosprite.setTexture(herotexture);
-	herosprite.setTextureRect(IntRect(0, 192, 96, 96));//получили нужный нам пр€моугольник с котом
-	herosprite.setPosition(250, 250); //выводим спрайт в позицию x y 
+	herosprite.setTextureRect(IntRect(0, 192, 96, 96));
+	herosprite.setPosition(250, 250);
 
-
+	float heroteleporttimer = 0; //создаем дл€ примера телепортации геро€ через 3 секунды
+	Clock clock; //создаем переменную времени, т.о. прив€зка ко времени(а не мощности/загруженности процессора). 
 
 	while (window.isOpen())
 	{
 
+		float time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее врем€ в микросекундах
+		clock.restart(); //перезагружает врем€
+		time = time / 800; //скорость игры
+		
 
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -28,14 +34,12 @@ int main()
 				window.close();
 		}
 
-		/*if (Keyboard::isKeyPressed(Keyboard::Left)) { herosprite.move(-0.1, 0); } //перва€ координата ’ отрицательна =>идЄм влево
-		if (Keyboard::isKeyPressed(Keyboard::Right)) { herosprite.move(0.1, 0); } //перва€ координата ’ положительна =>идЄм вправо
-		if (Keyboard::isKeyPressed(Keyboard::Up)) { herosprite.move(0, -0.1); } //втора€ координата (”) отрицательна =>идЄм вверх (вспоминаем из предыдущих уроков почему именно вверх, а не вниз)
-		if (Keyboard::isKeyPressed(Keyboard::Down)) { herosprite.move(0, 0.1); } //втора€ координата (”) положительна =>идЄм вниз (если не пон€тно почему именно вниз - смотрим предыдущие уроки)*/
-		if (Keyboard::isKeyPressed(Keyboard::Left)) { herosprite.move(-0.1, 0); herosprite.setTextureRect(IntRect(0, 96, 96, 96)); } //координата Y, на которой герой изображен идущим влево равна 96
-		if (Keyboard::isKeyPressed(Keyboard::Right)) { herosprite.move(0.1, 0); herosprite.setTextureRect(IntRect(0, 192, 96, 96)); } //координата Y, на которой герой изображен идущем вправо равна 96+96=192
-		if (Keyboard::isKeyPressed(Keyboard::Up)) { herosprite.move(0, -0.1); herosprite.setTextureRect(IntRect(0, 288, 96, 96)); } //координата Y на которой герой изображен идущим вверх равна 288
-		if (Keyboard::isKeyPressed(Keyboard::Down)) { herosprite.move(0, 0.1); herosprite.setTextureRect(IntRect(0, 0, 96, 96)); } //координата 0, это верхн€€ часть изображени€ с героем, от нее и отталкиваемс€ ровными квадратиками по 96. 
+		if ((Keyboard::isKeyPressed(Keyboard::Left) || (Keyboard::isKeyPressed(Keyboard::A)))) { herosprite.move(-0.1*time, 0); herosprite.setTextureRect(IntRect(0, 96, 96, 96)); } //-0,1 это скорость, умножаем еЄ на наше врем€ и получаем пройденное рассто€ние
+		if ((Keyboard::isKeyPressed(Keyboard::Right) || (Keyboard::isKeyPressed(Keyboard::D)))) { herosprite.move(0.1*time, 0); herosprite.setTextureRect(IntRect(0, 192, 96, 96)); } // см коммент выше
+		if ((Keyboard::isKeyPressed(Keyboard::Up) || (Keyboard::isKeyPressed(Keyboard::W)))) { herosprite.move(0, -0.1*time); herosprite.setTextureRect(IntRect(0, 288, 96, 96)); }// см выше
+		if ((Keyboard::isKeyPressed(Keyboard::Down) || (Keyboard::isKeyPressed(Keyboard::S)))) { herosprite.move(0, 0.1*time); herosprite.setTextureRect(IntRect(0, 0, 96, 96)); }// см выше
+
+
 		window.clear();
 		window.draw(herosprite);
 		window.display();
