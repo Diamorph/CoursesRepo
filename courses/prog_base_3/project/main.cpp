@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include <iostream> // подключаем, чтобы посмотреть на время в консоли
+#include <iostream> 
 
 using namespace sf;
 int main()
@@ -16,16 +16,16 @@ int main()
 	herosprite.setTextureRect(IntRect(0, 192, 96, 96));
 	herosprite.setPosition(250, 250);
 
-	float heroteleporttimer = 0; //создаем для примера телепортации героя через 3 секунды
-	Clock clock; //создаем переменную времени, т.о. привязка ко времени(а не мощности/загруженности процессора). 
+	float CurrentFrame = 0;//хранит текущий кадр
+	Clock clock;
 
 	while (window.isOpen())
 	{
 
-		float time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
-		clock.restart(); //перезагружает время
-		time = time / 800; //скорость игры
-		
+		float time = clock.getElapsedTime().asMicroseconds();
+		clock.restart();
+		time = time / 800;
+
 
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -34,11 +34,38 @@ int main()
 				window.close();
 		}
 
-		if ((Keyboard::isKeyPressed(Keyboard::Left) || (Keyboard::isKeyPressed(Keyboard::A)))) { herosprite.move(-0.1*time, 0); herosprite.setTextureRect(IntRect(0, 96, 96, 96)); } //-0,1 это скорость, умножаем её на наше время и получаем пройденное расстояние
-		if ((Keyboard::isKeyPressed(Keyboard::Right) || (Keyboard::isKeyPressed(Keyboard::D)))) { herosprite.move(0.1*time, 0); herosprite.setTextureRect(IntRect(0, 192, 96, 96)); } // см коммент выше
-		if ((Keyboard::isKeyPressed(Keyboard::Up) || (Keyboard::isKeyPressed(Keyboard::W)))) { herosprite.move(0, -0.1*time); herosprite.setTextureRect(IntRect(0, 288, 96, 96)); }// см выше
-		if ((Keyboard::isKeyPressed(Keyboard::Down) || (Keyboard::isKeyPressed(Keyboard::S)))) { herosprite.move(0, 0.1*time); herosprite.setTextureRect(IntRect(0, 0, 96, 96)); }// см выше
 
+		///////////////////////////////////////////Управление персонажем с анимацией////////////////////////////////////////////////////////////////////////
+		if ((Keyboard::isKeyPressed(Keyboard::Left) || (Keyboard::isKeyPressed(Keyboard::A)))) { //если нажата клавиша стрелка влево или англ буква А
+			CurrentFrame += 0.005*time; //служит для прохождения по "кадрам". переменная доходит до трех суммируя произведение времени и скорости. изменив 0.005 можно изменить скорость анимации
+			if (CurrentFrame > 3) CurrentFrame -= 3; //проходимся по кадрам с первого по третий включительно. если пришли к третьему кадру - откидываемся назад.
+			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 96, 96, 96)); //проходимся по координатам Х. получается 96,96*2,96*3 и опять 96
+			herosprite.move(-0.1*time, 0);//происходит само движение персонажа влево
+		}
+
+		if ((Keyboard::isKeyPressed(Keyboard::Right) || (Keyboard::isKeyPressed(Keyboard::D)))) {
+			CurrentFrame += 0.005*time; //служит для прохождения по "кадрам". переменная доходит до трех суммируя произведение времени и скорости. изменив 0.005 можно изменить скорость анимации
+			if (CurrentFrame > 3) CurrentFrame -= 3; //проходимся по кадрам с первого по третий включительно. если пришли к третьему кадру - откидываемся назад.
+			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 192, 96, 96)); //проходимся по координатам Х. получается 96,96*2,96*3 и опять 96
+
+			herosprite.move(0.1*time, 0);//происходит само движение персонажа вправо
+
+		}
+
+
+		if ((Keyboard::isKeyPressed(Keyboard::Up) || (Keyboard::isKeyPressed(Keyboard::W)))) {
+			CurrentFrame += 0.005*time; //служит для прохождения по "кадрам". переменная доходит до трех суммируя произведение времени и скорости. изменив 0.005 можно изменить скорость анимации
+			if (CurrentFrame > 3) CurrentFrame -= 3; //проходимся по кадрам с первого по третий включительно. если пришли к третьему кадру - откидываемся назад.
+			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 288, 96, 96)); //проходимся по координатам Х. получается 96,96*2,96*3 и опять 96
+			herosprite.move(0, -0.1*time);//происходит само движение персонажа вверх
+		}
+
+		if ((Keyboard::isKeyPressed(Keyboard::Down) || (Keyboard::isKeyPressed(Keyboard::S)))) {
+			CurrentFrame += 0.005*time; //служит для прохождения по "кадрам". переменная доходит до трех суммируя произведение времени и скорости. изменив 0.005 можно изменить скорость анимации
+			if (CurrentFrame > 3) CurrentFrame -= 3; //проходимся по кадрам с первого по третий включительно. если пришли к третьему кадру - откидываемся назад.
+			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 0, 96, 96)); //проходимся по координатам Х. получается 96,96*2,96*3 и опять 96
+			herosprite.move(0, 0.1*time);//происходит само движение персонажа вниз
+		}
 
 		window.clear();
 		window.draw(herosprite);
