@@ -175,6 +175,29 @@ static void Player__command__fire(void **queue, void **player){
     player_remove(&pl);
 }
 
+static void Player__command__ErrorCommand(void **queue, void **player){
+    struct command com;
+    queue_t * q = queue_new();
+    player_t * pl[1];
+    pl[0] = player_new('w', 's', 'd', 'a', 'f');
+    char index = 'y';
+    char * moves;
+    moves = player_get_moves(pl[0]);
+    for (int i = 0; i < 5; i++){
+    if (moves[i] == index)
+                    {
+                        i++;
+                        com.command = i;
+                        com.players = pl[i];
+                        queue_add(q, com);
+                        //assert_int_equal(i,);
+                    }
+    }
+    assert_int_equal(queue_size(q),0);
+    queue_remove(&q);
+    player_remove(&pl);
+}
+
 static void Add__to__queue(void **queue, void **player){
     struct command com;
     queue_t * q = queue_new();
@@ -282,6 +305,7 @@ const struct CMUnitTest tests[] =
     cmocka_unit_test(Player__command__left),
     cmocka_unit_test(Player__command__right),
     cmocka_unit_test(Player__command__fire),
+    cmocka_unit_test(Player__command__ErrorCommand),
     };
     return cmocka_run_group_tests(tests, NULL, NULL);
 }
