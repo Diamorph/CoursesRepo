@@ -10,7 +10,7 @@
 #include <time.h>
 #include <conio.h>
 
-int main(void)
+/*int main(void)
 {
     player_t * pl[5];
     pl[0] = player_new('w', 's', 'd', 'a', 'f');
@@ -18,7 +18,7 @@ int main(void)
     queue_t * q = queue_new();
     scan(pl, 2, q);
     return 0;
-}
+}*/
 
 
 void scan(player_t ** players, int numbOfPlayers, queue_t * queue){
@@ -63,6 +63,116 @@ static void Create__new__queue(void **queue){
     queue_t * q = queue_new();
     assert_int_equal(queue_size(q),0);
     queue_remove(&q);
+}
+
+static void Player__command__up(void **queue, void **player){
+    struct command com;
+    queue_t * q = queue_new();
+    player_t * pl[1];
+    pl[0] = player_new('w', 's', 'd', 'a', 'f');
+    char index = 'w';
+    char * moves;
+    moves = player_get_moves(pl[0]);
+    for (int i = 0; i < 5; i++){
+    if (moves[i] == index)
+                    {
+                        i++;
+                        com.command = i;
+                        com.players = pl[i];
+                        queue_add(q, com);
+                        assert_int_equal(i,1);
+                    }
+    }
+    queue_remove(&q);
+    player_remove(&pl);
+}
+
+static void Player__command__down(void **queue, void **player){
+    struct command com;
+    queue_t * q = queue_new();
+    player_t * pl[1];
+    pl[0] = player_new('w', 's', 'd', 'a', 'f');
+    char index = 's';
+    char * moves;
+    moves = player_get_moves(pl[0]);
+    for (int i = 0; i < 5; i++){
+    if (moves[i] == index)
+                    {
+                        i++;
+                        com.command = i;
+                        com.players = pl[i];
+                        queue_add(q, com);
+                        assert_int_equal(i,2);
+                    }
+    }
+    queue_remove(&q);
+    player_remove(&pl);
+}
+
+static void Player__command__right(void **queue, void **player){
+    struct command com;
+    queue_t * q = queue_new();
+    player_t * pl[1];
+    pl[0] = player_new('w', 's', 'd', 'a', 'f');
+    char index = 'd';
+    char * moves;
+    moves = player_get_moves(pl[0]);
+    for (int i = 0; i < 5; i++){
+    if (moves[i] == index)
+                    {
+                        i++;
+                        com.command = i;
+                        com.players = pl[i];
+                        queue_add(q, com);
+                        assert_int_equal(i,4);
+                    }
+    }
+    queue_remove(&q);
+    player_remove(&pl);
+}
+
+static void Player__command__left(void **queue, void **player){
+    struct command com;
+    queue_t * q = queue_new();
+    player_t * pl[1];
+    pl[0] = player_new('w', 's', 'd', 'a', 'f');
+    char index = 'a';
+    char * moves;
+    moves = player_get_moves(pl[0]);
+    for (int i = 0; i < 5; i++){
+    if (moves[i] == index)
+                    {
+                        i++;
+                        com.command = i;
+                        com.players = pl[i];
+                        queue_add(q, com);
+                        assert_int_equal(i,3);
+                    }
+    }
+    queue_remove(&q);
+    player_remove(&pl);
+}
+
+static void Player__command__fire(void **queue, void **player){
+    struct command com;
+    queue_t * q = queue_new();
+    player_t * pl[1];
+    pl[0] = player_new('w', 's', 'd', 'a', 'f');
+    char index = 'f';
+    char * moves;
+    moves = player_get_moves(pl[0]);
+    for (int i = 0; i < 5; i++){
+    if (moves[i] == index)
+                    {
+                        i++;
+                        com.command = i;
+                        com.players = pl[i];
+                        queue_add(q, com);
+                        assert_int_equal(i,5);
+                    }
+    }
+    queue_remove(&q);
+    player_remove(&pl);
 }
 
 static void Add__to__queue(void **queue, void **player){
@@ -158,7 +268,7 @@ static void Queue__del(void **queue, void **player){
 }
 
 
-/*int main(void){
+int main(void){
     struct command com;
 const struct CMUnitTest tests[] =
     {
@@ -167,6 +277,11 @@ const struct CMUnitTest tests[] =
     cmocka_unit_test(Queue__size),
     cmocka_unit_test(Double__queue),
     cmocka_unit_test(Queue__del),
+    cmocka_unit_test(Player__command__up),
+    cmocka_unit_test(Player__command__down),
+    cmocka_unit_test(Player__command__left),
+    cmocka_unit_test(Player__command__right),
+    cmocka_unit_test(Player__command__fire),
     };
     return cmocka_run_group_tests(tests, NULL, NULL);
-}*/
+}
