@@ -1,0 +1,36 @@
+[
+   {
+      "name": "Anton",
+      "surname": "Antonov",
+      "birthdate": "1973-09-15",
+      "theNumberOfScientificPapers": "23",
+      "experience": "4.6",
+      "company":{
+            "name": "Google",
+            "deparment": "Applied Mathematics"
+         }
+   },
+   {
+      "name": "Taras",
+      "surname": "Shevchenko",
+      "birthdate": "1968-11-13",
+      "theNumberOfScientificPapers": "12",
+      "experience": "3.9",
+      "company":
+      {
+            "name": "Microsoft",
+            "deparment": "Applied Mathematics"
+         }
+   },
+    {
+      "name": "Irina",
+      "surname": "Kuzmenko",
+      "birthdate": "1984-09-11",
+      "theNumberOfScientificPapers": "3",
+      "experience": "2.5",
+      "company":{
+            "name": "Apple",
+            "deparment": "Applied Mathematics"
+         }
+   }
+]

@@ -1,0 +1,35 @@
+<scientists>
+    <scientist>
+        <name>Anton</name>
+        <surname>Antonov</surname>
+        <birthdate>1973-09-15</birthdate>
+        <theNumberOfScientificPapers>23</theNumberOfScientificPapers>
+        <experience>4.6</experience>
+        <company name ="Google">
+            <deparment>Applied Mathematics</deparment>
+        </company>
+    </scientist>
+
+    <scientist>
+        <name>Taras</name>
+        <surname>Shevchenko</surname>
+        <birthdate>1968-11-13</birthdate>
+        <theNumberOfScientificPapers>12</theNumberOfScientificPapers>
+        <experience>3.9</experience>
+        <company name ="Microsoft">
+            <deparment>Applied Mathematics</deparment>
+        </company>
+    </scientist>
+
+    <scientist>
+        <name>Irina</name>
+        <surname>Kuzmenko</surname>
+        <birthdate>1984-09-11</birthdate>
+        <theNumberOfScientificPapers>3</theNumberOfScientificPapers>
+        <experience>2.5</experience>
+        <company name ="Apple">
+            <deparment>Applied Mathematics</deparment>
+        </company>
+    </scientist>
+
+</scientists>
