@@ -1,19 +1,21 @@
 #include <SFML/Graphics.hpp>
-#include <iostream> 
-#include "map.h" 
+#include "map.h"
+#include "view.h"
 
 using namespace sf;
 
 class Player {
+private: float x, y;
 public:
-	float x, y, w, h, dx, dy, speed;
-	int dir;
+	float w, h, dx, dy, speed;
+	int dir = 0;
 	String File;
 	Image image;
 	Texture texture;
 	Sprite sprite;
 	Player(String F, float X, float Y, float W, float H){
-		dx = 0; dy = 0; speed = 0; dir = 0;
+		dx = 0; dy = 0; speed = 0;
+
 		File = F;
 		w = W; h = H;
 		image.loadFromFile("images/" + File);
@@ -39,12 +41,21 @@ public:
 		speed = 0;
 		sprite.setPosition(x, y);
 	}
-};
 
+	float getplayercoordinateX(){	
+		return x;
+	}
+	float getplayercoordinateY(){	 	
+		return y;
+	}
+
+};
 
 int main()
 {
 	RenderWindow window(sf::VideoMode(640, 480), "Chris Jumper");
+	view.reset(sf::FloatRect(0, 0, 640, 480));
+
 
 	Image map_image;
 	map_image.loadFromFile("images/map.png");
@@ -55,6 +66,7 @@ int main()
 
 
 	Player p("hero.png", 250, 250, 96.0, 96.0);
+
 
 	float CurrentFrame = 0;
 	Clock clock;
@@ -74,44 +86,53 @@ int main()
 				window.close();
 		}
 
-		if ((Keyboard::isKeyPressed(Keyboard::Left) || (Keyboard::isKeyPressed(Keyboard::A)))) {
+		
+		if (Keyboard::isKeyPressed(Keyboard::Left)) {
 			p.dir = 1; p.speed = 0.1;
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 96, 96, 96));
+			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 		}
 
-		if ((Keyboard::isKeyPressed(Keyboard::Right) || (Keyboard::isKeyPressed(Keyboard::D)))) {
+		if (Keyboard::isKeyPressed(Keyboard::Right)) {
 			p.dir = 0; p.speed = 0.1;
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 192, 96, 96));
+			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 		}
 
-		if ((Keyboard::isKeyPressed(Keyboard::Up) || (Keyboard::isKeyPressed(Keyboard::W)))) {
+		if (Keyboard::isKeyPressed(Keyboard::Up)) {
 			p.dir = 3; p.speed = 0.1;
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 288, 96, 96));
+			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 
 		}
 
-		if ((Keyboard::isKeyPressed(Keyboard::Down) || (Keyboard::isKeyPressed(Keyboard::S)))) {
+		if (Keyboard::isKeyPressed(Keyboard::Down)) {
 			p.dir = 2; p.speed = 0.1;
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 0, 96, 96));
+			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 
 		}
+
 		p.update(time);
-
-
+		viewmap(time);
+		changeview();
+		window.setView(view);
 		window.clear();
 
+
+		
 		for (int i = 0; i < HEIGHT_MAP; i++)
 		for (int j = 0; j < WIDTH_MAP; j++)
 		{
-			if (TileMap[i][j] == ' ')  s_map.setTextureRect(IntRect(0, 0, 32, 32)); 
+			if (TileMap[i][j] == ' ')  s_map.setTextureRect(IntRect(0, 0, 32, 32));
 			if (TileMap[i][j] == 's')  s_map.setTextureRect(IntRect(32, 0, 32, 32));
 			if ((TileMap[i][j] == '0')) s_map.setTextureRect(IntRect(64, 0, 32, 32));
 
@@ -120,8 +141,6 @@ int main()
 
 			window.draw(s_map);
 		}
-
-
 		window.draw(p.sprite);
 		window.display();
 	}
