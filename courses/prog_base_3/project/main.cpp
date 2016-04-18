@@ -1,21 +1,23 @@
 #include <SFML/Graphics.hpp>
+#include <iostream> 
 #include "map.h"
 #include "view.h"
-
 using namespace sf;
+
+
+
 
 class Player {
 private: float x, y;
 public:
 	float w, h, dx, dy, speed;
-	int dir = 0;
+	int dir;
 	String File;
 	Image image;
 	Texture texture;
 	Sprite sprite;
 	Player(String F, float X, float Y, float W, float H){
-		dx = 0; dy = 0; speed = 0;
-
+		dx = 0; dy = 0; speed = 0; dir = 0;
 		File = F;
 		w = W; h = H;
 		image.loadFromFile("images/" + File);
@@ -40,22 +42,61 @@ public:
 
 		speed = 0;
 		sprite.setPosition(x, y);
+		interactionWithMap();
 	}
 
-	float getplayercoordinateX(){	
+
+	void interactionWithMap()
+	{
+
+		for (int i = y / 32; i < (y + h) / 32; i++)
+		for (int j = x / 32; j<(x + w) / 32; j++)
+		{
+			if (TileMap[i][j] == '0')
+			{
+				if (dy>0)
+				{
+					y = i * 32 - h;
+				}
+				if (dy<0)
+				{
+					y = i * 32 + 32;
+				}
+				if (dx>0)
+				{
+					x = j * 32 - w;
+				}
+				if (dx < 0)
+				{
+					x = j * 32 + 32;
+				}
+			}
+
+			if (TileMap[i][j] == 's') { 
+				x = 300; y = 300;
+				//TileMap[i][j] = ' ';//убираем камень, типа взяли бонус. можем и не убирать, кстати.
+			}
+		}
+	}
+
+
+	float getplayercoordinateX(){
 		return x;
 	}
-	float getplayercoordinateY(){	 	
+	float getplayercoordinateY(){
 		return y;
 	}
 
 };
 
+
+
 int main()
 {
 	RenderWindow window(sf::VideoMode(640, 480), "Chris Jumper");
-	view.reset(sf::FloatRect(0, 0, 640, 480));
 
+
+	view.reset(sf::FloatRect(0, 0, 640, 480));
 
 	Image map_image;
 	map_image.loadFromFile("images/map.png");
@@ -66,7 +107,6 @@ int main()
 
 
 	Player p("hero.png", 250, 250, 96.0, 96.0);
-
 
 	float CurrentFrame = 0;
 	Clock clock;
@@ -86,13 +126,16 @@ int main()
 				window.close();
 		}
 
-		
+		float coordinatePlayerX, coordinatePlayerY = 0;
+		coordinatePlayerX = p.getplayercoordinateX();
+		coordinatePlayerY = p.getplayercoordinateY();
+
+
 		if (Keyboard::isKeyPressed(Keyboard::Left)) {
 			p.dir = 1; p.speed = 0.1;
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 96, 96, 96));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Right)) {
@@ -100,7 +143,6 @@ int main()
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 192, 96, 96));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Up)) {
@@ -108,8 +150,6 @@ int main()
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 288, 96, 96));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
-
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Down)) {
@@ -117,18 +157,15 @@ int main()
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 			p.sprite.setTextureRect(IntRect(96 * int(CurrentFrame), 0, 96, 96));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
-
 		}
-
+		getplayercoordinateforview(coordinatePlayerX, coordinatePlayerY);
 		p.update(time);
-		viewmap(time);
-		changeview();
+
+
+
 		window.setView(view);
 		window.clear();
 
-
-		
 		for (int i = 0; i < HEIGHT_MAP; i++)
 		for (int j = 0; j < WIDTH_MAP; j++)
 		{
@@ -136,11 +173,12 @@ int main()
 			if (TileMap[i][j] == 's')  s_map.setTextureRect(IntRect(32, 0, 32, 32));
 			if ((TileMap[i][j] == '0')) s_map.setTextureRect(IntRect(64, 0, 32, 32));
 
-
 			s_map.setPosition(j * 32, i * 32);
 
 			window.draw(s_map);
 		}
+
+
 		window.draw(p.sprite);
 		window.display();
 	}
