@@ -8,8 +8,8 @@
 
 typedef struct dynamic_s {
     HANDLE hLib;
-    check_cb check;
-    reaction_cb reaction;
+    check_f check;
+    reaction_f reaction;
 } dynamic_t;
 
 const char * userChoice();
@@ -83,8 +83,8 @@ dynamic_t * dynamic_init(const char * dllName) {
     dyn->check = NULL;
     dyn->reaction = NULL;
     if (NULL != dyn->hLib) {
-        dyn->check = (check_cb)GetProcAddress(dyn->hLib, "check");
-        dyn->reaction = (reaction_cb)GetProcAddress(dyn->hLib, "reaction");
+        dyn->check = (check_f)GetProcAddress(dyn->hLib, "check");
+        dyn->reaction = (reaction_f)GetProcAddress(dyn->hLib, "reaction");
         return dyn;
     } else {
         return NULL;

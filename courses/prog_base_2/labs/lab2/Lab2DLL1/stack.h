@@ -7,8 +7,8 @@
 #define MAX_STRING_SIZE 300
 typedef struct stack_s* stack_t;
 
-typedef int(*check_cb)(stack_t self, char* input);
-typedef void(*reaction_cb)(stack_t self, char* input);
+typedef int(*check_f)(stack_t self, char* input);
+typedef void(*reaction_f)(stack_t self, char* input);
 
 stack_t stack_new(void);
 void stack_free(stack_t self);

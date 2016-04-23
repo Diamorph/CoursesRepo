@@ -1,7 +1,16 @@
 # depslib dependency file v1.0
-1385320478 source:c:\users\admin\desktop\lab2\lab2dll2\main.cpp
+1461338174 source:c:\users\admin\desktop\lab2\lab2dll2\main.cpp
 	"main.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 
-1385320478 c:\users\admin\desktop\lab2\lab2dll2\main.h
+1461338124 c:\users\admin\desktop\lab2\lab2dll2\main.h
 	<windows.h>
+	"stack.h"
+
+1461395806 c:\users\admin\desktop\lab2\lab2dll2\stack.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 

@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
 1461359998 source:c:\users\admin\desktop\lab2\lab2staticlib\main.c
 
-1461359907 c:\users\admin\desktop\lab2\lab2staticlib\stack.h
+1461395805 c:\users\admin\desktop\lab2\lab2staticlib\stack.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
