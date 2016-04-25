@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "stack.h"
 
 int check(stack_t self, char* str){
     if (stack_getCount(self) > 10){

@@ -5,7 +5,8 @@
 #include <string.h>
 #define MAX_STACK_SIZE 50
 #define MAX_STRING_SIZE 300
-typedef struct stack_s* stack_t;
+
+typedef struct stack_s * stack_t;
 
 typedef int(*check_f)(stack_t self, char* input);
 typedef void(*reaction_f)(stack_t self, char* input);

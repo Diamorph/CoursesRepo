@@ -35,11 +35,16 @@
 	<stdlib.h>
 	<string.h>
 
-1460388179 c:\users\admin\desktop\lab2\lab2dll1\main.h
+1461577274 c:\users\admin\desktop\lab2\lab2dll1\main.h
 	<windows.h>
 	"stack.h"
 
 1461395806 c:\users\admin\desktop\lab2\lab2dll1\stack.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1461577246 c:\users\admin\desktop\lab2\lab2staticlib\stack.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

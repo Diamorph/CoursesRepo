@@ -3,7 +3,6 @@
 #include <string.h>
 #include <windows.h>
 #include <time.h>
-
 #include "stack.h"
 
 typedef struct dynamic_s {
