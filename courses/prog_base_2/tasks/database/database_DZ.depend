@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1461546698 source:c:\users\admin\desktop\database_dz\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sqlite3.h>
+	<stdio.h>
+	<stdlib.h>
+	"db_manager.h"
+	"scientists.h"
+
+1461540608 source:c:\users\admin\desktop\database_dz\scientists.c
+	<stdlib.h>
+	<stdio.h>
+	"scientists.h"
+
+1461540533 c:\users\admin\desktop\database_dz\scientists.h
+
+1461545051 source:c:\users\admin\desktop\database_dz\db_manager.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sqlite3.h>
+	"db_manager.h"
+	"scientists.h"
+
+1461542430 c:\users\admin\desktop\database_dz\db_manager.h
+	"scientists.h"
+	"sqlite3.h"
+
+1461353857 c:\users\admin\desktop\database_dz\sqlite3.h
+	<stdarg.h>
+
+1461353857 source:c:\users\admin\desktop\database_dz\sqlite3.c
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	<tcl.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<ctype.h>
+	<math.h>
+
