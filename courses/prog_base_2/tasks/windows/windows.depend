@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1463348096 source:c:\users\admin\desktop\windows\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<tchar.h>
+	<CommCtrl.h>
+	"scientist.h"
+
+1463348706 source:c:\users\admin\desktop\windows\scientist.c
+	"scientist.h"
+
+1463348707 c:\users\admin\desktop\windows\scientist.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+
