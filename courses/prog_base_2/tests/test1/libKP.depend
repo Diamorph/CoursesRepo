@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1385320480 source:c:\users\admin\desktop\libkp\main.c
+
+1463816449 source:c:\users\admin\desktop\libkp\list.c
+	<stdlib.h>
+	"list.h"
+
+1463816469 c:\users\admin\desktop\libkp\list.h
+	<stdlib.h>
+
+1463816300 source:c:\users\admin\desktop\libkp\oc.c
+
