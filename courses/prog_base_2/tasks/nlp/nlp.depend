@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1463960111 source:d:\nlp\main.c
+	"nlp.h"
+
+1463960580 d:\nlp\nlp.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1463960612 source:d:\nlp\nlp.c
+	"nlp.h"
+
