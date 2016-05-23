@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1464006102 source:d:\Учоба\2 семестр\Прога\lab3\main.c
+	"queue.h"
+	"queue_func.h"
+
+1464004063 d:\Учоба\2 семестр\Прога\lab3\queue.h
+	"headers.h"
+
+1464005443 d:\Учоба\2 семестр\Прога\lab3\headers.h
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<string.h>
+	<cmocka.h>
+	<cmocka_pbc.h>
+	<time.h>
+	<conio.h>
+	<math.h>
+
+1464006350 d:\Учоба\2 семестр\Прога\lab3\queue_func.h
+	"headers.h"
+	"queue.h"
+	"subscriber.h"
+
+1464005528 d:\Учоба\2 семестр\Прога\lab3\subscriber.h
+	"headers.h"
+	"message.h"
+
+1464006334 d:\Учоба\2 семестр\Прога\lab3\message.h
+	"headers.h"
+
+1464006300 source:d:\Учоба\2 семестр\Прога\lab3\message.c
+	"message.h"
+	"subscriber.h"
+
+1464004949 source:d:\Учоба\2 семестр\Прога\lab3\queue.c
+	"queue.h"
+
+1464003237 source:d:\Учоба\2 семестр\Прога\lab3\queue_func.c
+	"queue_func.h"
+
+1464005506 source:d:\Учоба\2 семестр\Прога\lab3\subscriber.c
+	"subscriber.h"
+
+1424096216 c:\program files (x86)\cmocka\include\cmocka.h
+
+1423652600 c:\program files (x86)\cmocka\include\cmocka_pbc.h
+	<assert.h>
+
