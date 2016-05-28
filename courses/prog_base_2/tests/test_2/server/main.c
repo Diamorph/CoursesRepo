@@ -34,10 +34,18 @@ int main()
 #include <string.h>
 #include "socket.h"
 #include "server.h"
+#include "list.h"
+#include "db_manager.h"
 #include <winsock2.h>
 #include <windows.h>
 #include "cJSON.h"
 #include <time.h>
+#include <sqlite3.h>
+#include <string.h>
+
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <dirent.h>
 
 
 #define NO_FLAGS_SET 0
@@ -176,6 +184,38 @@ int main(void) {
          if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/external") == 0 )
         {
             server_sent(client,jsonSM);
+        }
+
+            if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/database") == 0 )
+        {
+            list_t * list = list_new();
+            const char * dbFile = "db.db";
+            db_t * db = db_new(dbFile);
+            db_getScientists(db,list);
+
+            char homeBuf[10240];
+            char text[5000];
+            strcpy(text,"[\n");
+            for (int i = 0; i < list_getSize(list); i++)
+{
+                strcat(text,scientist_toJSON(list_getByID(list,i)));
+                strcat(text,",\n");
+}
+            strcat(text,"]\n");
+            sprintf(homeBuf,
+            "HTTP/1.1 404 \n"
+            "Content-Type: text/html/application/json\n"
+            "Content-Length: %zu\n"
+            "\n%s", strlen(text), text);
+            socket_write(client, homeBuf,sizeof(homeBuf));
+        }
+         if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/dir-delete/dir1") == 0 )
+        {
+                const char * testDir1 = "C:\\dir1";
+                dir_deleteFiles(testDir1);
+               // const char * testDir1 = "C:\\dir1";
+                //printf("Dir exists: %i\n", dir_exists(testDir1));
+                //printf("Remove file: %i\n", dir_deleteFiles(testFile2));
         }
 
         }

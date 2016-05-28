@@ -88,3 +88,32 @@
 	<ctype.h>
 	<math.h>
 
+1461545051 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tasks\database\db_manager.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sqlite3.h>
+	"db_manager.h"
+	"scientists.h"
+
+1461542430 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tasks\database\db_manager.h
+	"scientists.h"
+	"sqlite3.h"
+
+1461540533 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tasks\database\scientists.h
+
+1461546909 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tasks\database\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sqlite3.h>
+	<stdio.h>
+	<stdlib.h>
+	"db_manager.h"
+	"scientists.h"
+
+1461540608 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tasks\database\scientists.c
+	<stdlib.h>
+	<stdio.h>
+	"scientists.h"
+

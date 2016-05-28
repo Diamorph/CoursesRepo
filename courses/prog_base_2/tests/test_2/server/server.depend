@@ -50,7 +50,7 @@
 
 1463802679 d:\kr_2\server\cjson.h
 
-1464432250 source:d:\kr_2\server\main.c
+1464439728 source:d:\kr_2\server\main.c
 	<stdlib.h>
 	<string.h>
 	"socket.h"
@@ -60,10 +60,13 @@
 	<string.h>
 	"socket.h"
 	"server.h"
+	"list.h"
+	"db_manager.h"
 	<winsock2.h>
 	<windows.h>
 	"cJSON.h"
 	<time.h>
+	<sqlite3.h>
 
 1464414254 d:\kr_2\server\socket.h
 
@@ -85,50 +88,39 @@
 	<winsock2.h>
 	"socket.h"
 
-1463802679 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\cjson.c
+1464438466 source:d:\kr_2\server\list.c
+	<stdlib.h>
+	<stdio.h>
+	"list.h"
+	"scientists.h"
+
+1464439628 d:\kr_2\server\list.h
+	<stdlib.h>
+	<stdio.h>
+	"scientists.h"
+
+1450800166 d:\kr_2\server\sqlite3.h
+	<stdarg.h>
+
+1464439668 source:d:\kr_2\server\db_manager.c
+	<stdlib.h>
+	<stdio.h>
 	<string.h>
-	<stdio.h>
-	<math.h>
-	<stdlib.h>
-	<float.h>
-	<limits.h>
-	<ctype.h>
+	<sqlite3.h>
+	"db_manager.h"
+	"scientists.h"
+	"list.h"
+
+1464439711 d:\kr_2\server\db_manager.h
+	"scientists.h"
+	"sqlite3.h"
 	"cJSON.h"
+	"list.h"
 
-1463802679 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\cjson.h
+1464437210 d:\kr_2\server\scientists.h
 
-1464432250 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\main.c
+1464437193 source:d:\kr_2\server\scientists.c
 	<stdlib.h>
-	<string.h>
-	"socket.h"
-	"server.h"
 	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"socket.h"
-	"server.h"
-	<winsock2.h>
-	<windows.h>
-	"cJSON.h"
-	<time.h>
-
-1464414254 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\socket.h
-
-1464431871 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\server.h
-	<stdio.h>
-	<stdlib.h>
-	"socket.h"
-
-1464432278 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\server.c
-	<stdio.h>
-	<stdlib.h>
-	<stddef.h>
-	"string.h"
-	"socket.h"
-	"server.h"
-	"cJSON.h"
-
-1464414304 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\socket.c
-	<winsock2.h>
-	"socket.h"
+	"scientists.h"
 
