@@ -8,8 +8,9 @@ using namespace sf;
 #include <SFML/Graphics.hpp>
 ////////////////////////////////////////////////////КЛАСС ИГРОКА////////////////////////
 class Player { // класс Игрока
+private: float x, y;
 public:
-	float x, y, w, h, dx, dy, speed = 0; //координаты игрока х и у, высота ширина, ускорение (по х и по у), сама скорость
+	float w, h, dx, dy, speed = 0; //координаты игрока х и у, высота ширина, ускорение (по х и по у), сама скорость
 	int dir = 0; //направление (direction) движения игрока
 	String File; //файл с расширением
 	Image image;//сфмл изображение
@@ -41,6 +42,40 @@ public:
 
 		speed = 0;//зануляем скорость, чтобы персонаж остановился.
 		sprite.setPosition(x, y); //выводим спрайт в позицию x y , посередине. бесконечно выводим в этой функции, иначе бы наш спрайт стоял на месте.
+		interactionWithMap();//вызываем функцию, отвечающую за взаимодействие с картой
+	}
+
+	void interactionWithMap()//ф-ция взаимодействия с картой
+	{
+
+		for (int i = y / 32; i < (y + h) / 32; i++)//проходимся по тайликам, контактирующим с игроком,, то есть по всем квадратикам размера 32*32, которые мы окрашивали в 9 уроке. про условия читайте ниже.
+		for (int j = x / 32; j<(x + w) / 32; j++)//икс делим на 32, тем самым получаем левый квадратик, с которым персонаж соприкасается. (он ведь больше размера 32*32, поэтому может одновременно стоять на нескольких квадратах). А j<(x + w) / 32 - условие ограничения координат по иксу. то есть координата самого правого квадрата, который соприкасается с персонажем. таким образом идем в цикле слева направо по иксу, проходя по от левого квадрата (соприкасающегося с героем), до правого квадрата (соприкасающегося с героем)
+		{
+			if (TileMap[i][j] == '0')//если наш квадратик соответствует символу 0 (стена), то проверяем "направление скорости" персонажа:
+			{
+				if (dy>0)//если мы шли вниз,
+				{
+					y = i * 32 - h;//то стопорим координату игрек персонажа. сначала получаем координату нашего квадратика на карте(стены) и затем вычитаем из высоты спрайта персонажа.
+				}
+				if (dy<0)
+				{
+					y = i * 32 + 32;//аналогично с ходьбой вверх. dy<0, значит мы идем вверх (вспоминаем координаты паинта)
+				}
+				if (dx>0)
+				{
+					x = j * 32 - w;//если идем вправо, то координата Х равна стена (символ 0) минус ширина персонажа
+				}
+				if (dx < 0)
+				{
+					x = j * 32 + 32;//аналогично идем влево
+				}
+			}
+
+			if (TileMap[i][j] == 's') { //если символ равен 's' (камень)
+				x = 300; y = 300;//какое то действие... например телепортация героя
+				TileMap[i][j] = ' ';//убираем камень, типа взяли бонус. можем и не убирать, кстати.
+			}
+		}
 	}
 
 	float getplayercoordinateX(){	//этим методом будем забирать координату Х	
@@ -83,36 +118,45 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
+
+		float coordinatePlayerX, coordinatePlayerY = 0;
+		coordinatePlayerX = p.getplayercoordinateX();
+		coordinatePlayerY = p.getplayercoordinateY();
+
 		///////////////////////////////////////////Управление персонажем с анимацией////////////////////////////////////////////////////////////////////////
 		if (Keyboard::isKeyPressed(Keyboard::Left)) {
 			p.dir = 1; p.speed = 0.1;//dir =1 - направление вверх, speed =0.1 - скорость движения. Заметьте - время мы уже здесь ни на что не умножаем и нигде не используем каждый раз
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 10) CurrentFrame -= 10;
 			p.sprite.setTextureRect(IntRect(110 + 110 * int(CurrentFrame), 0, -110, 110));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
+			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Right)) {
 			p.dir = 0; p.speed = 0.1;//направление вправо, см выше
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 10) CurrentFrame -= 10;
 			p.sprite.setTextureRect(IntRect(0 + 110 * int(CurrentFrame), 0, 110, 110));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
+			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Up)) {
 			p.dir = 3; p.speed = 0.1;//направление вниз, см выше
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 12) CurrentFrame -= 12;
 			p.sprite.setTextureRect(IntRect(0 + 75 * int(CurrentFrame), 1980, 75, 140));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
+			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Down)) {
 			p.dir = 2; p.speed = 0.1;//направление вверх, см выше
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 12) CurrentFrame -= 12;
 			p.sprite.setTextureRect(IntRect(900 - 75 * int(CurrentFrame), 1980, -75, 140));
-			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
+			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
+		getplayercoordinateforview(coordinatePlayerX, coordinatePlayerY);
 		p.update(time);//оживляем объект p класса Player с помощью времени sfml, передавая время в качестве параметра функции update. благодаря этому персонаж может двигаться
+		
+		
+		
 		viewmap(time);//функция скроллинга карты, передаем ей время sfml
 		window.setView(view);//"оживляем" камеру в окне sfml
 
