@@ -1,0 +1,44 @@
+<!DOCTYPE SpriteDecomposer>
+<sprites image="cyclops.png" transparentColor="D8D8D8">
+ <animation title="walk" delay="150">
+  <cut w="31" x="34" y="361" h="76" row="1" col="1"/>
+  <cut w="60" x="135" y="361" h="74" row="1" col="1"/>
+  <cut w="55" x="259" y="362" h="75" row="1" col="1"/>
+  <cut w="31" x="397" y="361" h="76" row="1" col="1"/>
+  <cut w="60" x="494" y="360" h="74" row="1" col="1"/>
+  <cut w="56" x="621" y="362" h="75" row="1" col="1"/>
+ </animation>
+ <animation title="Jump" delay="150">
+  <cut w="48" x="22" y="485" h="80" row="1" col="1"/>
+  <cut w="35" x="132" y="485" h="65" row="1" col="1"/>
+  <cut w="44" x="221" y="484" h="67" row="1" col="1"/>
+  <cut w="54" x="320" y="484" h="77" row="1" col="1"/>
+ </animation>
+ <animation title="stay" delay="150">
+  <cut w="44" x="37" y="160" h="75" row="1" col="1"/>
+  <cut w="44" x="140" y="160" h="75" row="1" col="1"/>
+  <cut w="44" x="248" y="160" h="75" row="1" col="1"/>
+  <cut w="44" x="348" y="160" h="75" row="1" col="1"/>
+  <cut w="44" x="455" y="160" h="75" row="1" col="1"/>
+  <cut w="44" x="559" y="160" h="75" row="1" col="1"/>
+ </animation>
+ <animation title="hit" delay="150">
+  <cut w="53" x="18" y="603" h="75" row="1" col="1"/>
+  <cut w="48" x="132" y="605" h="73" row="1" col="1"/>
+  <cut w="78" x="244" y="608" h="70" row="1" col="1"/>
+ </animation>
+ <animation title="hit by leg" delay="150">
+  <cut w="87" x="14" y="869" h="51" row="1" col="1"/>
+ </animation>
+ <animation title="laser" delay="150">
+  <cut w="46" x="41" y="1001" h="74" row="1" col="1"/>
+  <cut w="49" x="153" y="1001" h="74" row="1" col="1"/>
+  <cut w="49" x="277" y="1001" h="74" row="1" col="1"/>
+  <cut w="46" x="396" y="1002" h="72" row="1" col="1"/>
+  <cut w="45" x="514" y="1001" h="72" row="1" col="1"/>
+  <cut w="59" x="619" y="1033" h="43" row="1" col="1"/>
+  <cut w="194" x="789" y="1002" h="5" row="1" col="1"/>
+  <cut w="194" x="789" y="1024" h="13" row="1" col="1"/>
+  <cut w="195" x="788" y="1053" h="25" row="1" col="1"/>
+ </animation>
+</sprites>
