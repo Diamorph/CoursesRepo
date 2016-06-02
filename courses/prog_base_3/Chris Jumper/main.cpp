@@ -129,28 +129,24 @@ int main()
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 10) CurrentFrame -= 10;
 			p.sprite.setTextureRect(IntRect(110 + 110 * int(CurrentFrame), 0, -110, 110));
-			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Right)) {
 			p.dir = 0; p.speed = 0.1;//направление вправо, см выше
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 10) CurrentFrame -= 10;
 			p.sprite.setTextureRect(IntRect(0 + 110 * int(CurrentFrame), 0, 110, 110));
-			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Up)) {
 			p.dir = 3; p.speed = 0.1;//направление вниз, см выше
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 12) CurrentFrame -= 12;
 			p.sprite.setTextureRect(IntRect(0 + 75 * int(CurrentFrame), 1980, 75, 140));
-			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Down)) {
 			p.dir = 2; p.speed = 0.1;//направление вверх, см выше
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 12) CurrentFrame -= 12;
 			p.sprite.setTextureRect(IntRect(900 - 75 * int(CurrentFrame), 1980, -75, 140));
-			//getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());//передаем координаты игрока в функцию управления камерой
 		}
 		getplayercoordinateforview(coordinatePlayerX, coordinatePlayerY);
 		p.update(time);//оживляем объект p класса Player с помощью времени sfml, передавая время в качестве параметра функции update. благодаря этому персонаж может двигаться
