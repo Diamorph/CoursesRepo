@@ -11,7 +11,7 @@ class Player { // класс Игрока
 private: float x, y;
 public:
 	float w, h, dx, dy, speed = 0; //координаты игрока х и у, высота ширина, ускорение (по х и по у), сама скорость
-	int dir = 0; //направление (direction) движения игрока
+	int dir = 0, playerScore = 0;//новая переменная, хранящая очки игрока //направление (direction) движения игрока
 	String File; //файл с расширением
 	Image image;//сфмл изображение
 	Texture texture;//сфмл текстура
@@ -72,7 +72,7 @@ public:
 			}
 
 			if (TileMap[i][j] == 's') { //если символ равен 's' (камень)
-				x = 300; y = 300;//какое то действие... например телепортация героя
+				playerScore++;//если взяли камень, переменная playerScore=playerScore+1;
 				TileMap[i][j] = ' ';//убираем камень, типа взяли бонус. можем и не убирать, кстати.
 			}
 		}
@@ -91,6 +91,12 @@ int main()
 	RenderWindow window(sf::VideoMode(640, 480), "Chris Jumper");
 
 	view.reset(sf::FloatRect(0, 0, 640, 480));//размер "вида" камеры при создании объекта вида камеры. (потом можем менять как хотим) Что то типа инициализации.
+
+	Font font;//шрифт 
+	font.loadFromFile("CyrilicOld.ttf");//передаем нашему шрифту файл шрифта
+	Text text("", font, 20);//создаем объект текст. закидываем в объект текст строку, шрифт, размер шрифта(в пикселях);//сам объект текст (не строка)
+	text.setColor(Color::Red);//покрасили текст в красный. если убрать эту строку, то по умолчанию он белый
+	text.setStyle(Text::Bold);//жирный текст.
 
 
 	Image map_image;//объект изображения для карты
@@ -170,6 +176,12 @@ int main()
 
 			window.draw(s_map);//рисуем квадратики на экран
 		}
+
+		std::ostringstream playerScoreString;    // объявили переменную
+		playerScoreString << p.playerScore;		//занесли в нее число очков, то есть формируем строку
+		text.setString("Собрано камней:" + playerScoreString.str());//задаем строку тексту и вызываем сформированную выше строку методом .str() 
+		text.setPosition(view.getCenter().x - 165, view.getCenter().y - 200);//задаем позицию текста, отступая от центра камеры
+		window.draw(text);//рисую этот текст
 
 
 		window.draw(p.sprite);
