@@ -136,7 +136,8 @@ int main()
 	Clock clock;
 	Clock gameTimeClock;//переменная игрового времени, будем здесь хранить время игры 
 	int gameTime = 0;//объявили игровое время, инициализировали.
-	
+	int createObjectForMapTimer = 0;//timer for random
+	randomMapGenerate();
 
 	while (window.isOpen())
 	{
@@ -146,40 +147,6 @@ int main()
 		if (p.life) gameTime = gameTimeClock.getElapsedTime().asSeconds();//игровое время в секундах идёт вперед, пока жив игрок, перезагружать как time его не надо. оно не обновляет логику игры
 		clock.restart(); //перезагружает время
 		time = time / 800;
-		//sf::Event event;
-
-
-		/*sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-			if (event.type == Event::KeyPressed)//событие нажатия клавиши
-			if ((event.key.code == Keyboard::Tab)) {//если клавиша ТАБ
-
-
-				switch (showMissionText) {//переключатель, реагирующий на логическую переменную showMissionText
-
-				case true: {
-							   std::ostringstream playerHealthString;//строка здоровья игрока
-							   playerHealthString << p.health; //заносим в строку здоровье 
-							   std::ostringstream task;//строка текста миссии
-							   task << getTextMission(getCurrentMission(p.getplayercoordinateX()));//вызывается функция getTextMission (она возвращает текст миссии), которая принимает в качестве аргумента функцию getCurrentMission(возвращающую номер миссии), а уже эта ф-ция принимает в качестве аргумента функцию p.getplayercoordinateX() (эта ф-ция возвращает Икс координату игрока)
-							   text.setString("Здоровье: " + playerHealthString.str() + "\n" + task.str());//задаем
-							   text.setPosition(view.getCenter().x + 125, view.getCenter().y - 130);//позиция всего этого текстового блока
-							   s_quest.setPosition(view.getCenter().x + 115, view.getCenter().y - 130);//позиция фона для блока
-							   showMissionText = false;//эта строка позволяет убрать все что мы вывели на экране
-							   break;//выходим , чтобы не выполнить условие "false" (которое ниже)
-				}
-				case false: {
-								text.setString("");//если не нажата клавиша таб, то весь этот текст пустой
-								showMissionText = true;// а эта строка позволяет снова нажать клавишу таб и получить вывод на экран
-								break;
-				}
-				}
-			}
-		}*/
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -239,6 +206,19 @@ int main()
 			}
 			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 		}
+
+		/*sf::Vector2i localPosition = Mouse::getPosition(window);//заносим в вектор координаты мыши относительно окна (х,у)
+		if (localPosition.x < 3) { view.move(-0.2*time, 0); }//если пришли курсором в левый край экрана,то двигаем камеру влево
+		if (localPosition.x > window.getSize().x - 3) { view.move(0.2*time, 0); }//правый край-вправо
+		if (localPosition.y > window.getSize().y - 3) { view.move(0, 0.2*time); }//нижний край - вниз
+		if (localPosition.y < 3) { view.move(0, -0.2*time); }//верхний край - вверх*/
+		
+		createObjectForMapTimer += time;//наращиваем таймер
+		if (createObjectForMapTimer>3000){
+			randomMapGenerate();//генерация случ камней
+			createObjectForMapTimer = 0;//обнуляем таймер
+		}
+
 		p.update(time);//оживляем объект p класса Player с помощью времени sfml, передавая время в качестве параметра функции update. благодаря этому персонаж может двигаться
 
 		window.setView(view);//"оживляем" камеру в окне sfml
@@ -287,6 +267,4 @@ int main()
 
 	return 0;
 }
-
-
 
