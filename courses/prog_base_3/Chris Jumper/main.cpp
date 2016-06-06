@@ -11,13 +11,16 @@ class Player { // класс Игрока
 private: float x, y;
 public:
 	float w, h, dx, dy, speed = 0; //координаты игрока х и у, высота ширина, ускорение (по х и по у), сама скорость
-	int dir = 0, playerScore = 0;//новая переменная, хранящая очки игрока //направление (direction) движения игрока
+	int dir, playerScore,health;//новая переменная, хранящая очки игрока //направление (direction) движения игрока
+	bool life;//переменная жизнь, логическая
 	String File; //файл с расширением
 	Image image;//сфмл изображение
 	Texture texture;//сфмл текстура
 	Sprite sprite;//сфмл спрайт
 
 	Player(String F, float X, float Y, float W, float H){  //Конструктор с параметрами(формальными) для класса Player. При создании объекта класса мы будем задавать имя файла, координату Х и У, ширину и высоту
+		dir = 0; speed = 0; playerScore = 0; health = 100; // инициализировали переменную жизни в конструкторе
+		life = true;//инициализировали логическую переменную жизни
 		File = F;//имя файла+расширение
 		w = W; h = H;//высота и ширина
 		image.loadFromFile("images/" + File);//запихиваем в image наше изображение вместо File мы передадим то, что пропишем при создании объекта. В нашем случае "hero.png" и получится запись идентичная 	image.loadFromFile("images/hero/png");
@@ -43,6 +46,7 @@ public:
 		speed = 0;//зануляем скорость, чтобы персонаж остановился.
 		sprite.setPosition(x, y); //выводим спрайт в позицию x y , посередине. бесконечно выводим в этой функции, иначе бы наш спрайт стоял на месте.
 		interactionWithMap();//вызываем функцию, отвечающую за взаимодействие с картой
+		if (health <= 0){ life = false; speed = 0; }//если жизней меньше либо равно 0, то умираем и исключаем движение игрока после смерти
 	}
 
 	void interactionWithMap()//ф-ция взаимодействия с картой
@@ -75,6 +79,15 @@ public:
 				playerScore++;//если взяли камень, переменная playerScore=playerScore+1;
 				TileMap[i][j] = ' ';//убираем камень, типа взяли бонус. можем и не убирать, кстати.
 			}
+			if (TileMap[i][j] == 'f'){
+				health -= 40;// если взяли цветок, - хп
+				TileMap[i][j] = ' ';//убрали цветок
+			}
+			if (TileMap[i][j] == 'h'){
+				health += 10;// если взяли сердечко, + хп
+				TileMap[i][j] = ' ';//убрали сердечко
+			}
+
 		}
 	}
 
@@ -107,12 +120,16 @@ int main()
 	s_map.setTexture(map);//заливаем текстуру спрайтом
 	float CurrentFrame = 0;//хранит текущий кадр
 	Clock clock;
+	Clock gameTimeClock;//переменная игрового времени, будем здесь хранить время игры 
+	int gameTime = 0;//объявили игровое время, инициализировали.
 	Player p("capitan.png", 100, 100, 70.0, 120.0);//создаем объект p класса player,задаем "hero.png" как имя файла+расширение, далее координата Х,У, ширина, высота.
 
 	while (window.isOpen())
 	{
 
 		float time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
+
+		if (p.life) gameTime = gameTimeClock.getElapsedTime().asSeconds();//игровое время в секундах идёт вперед, пока жив игрок, перезагружать как time его не надо. оно не обновляет логику игры
 		clock.restart(); //перезагружает время
 		time = time / 800;
 		//sf::Event event;
@@ -130,31 +147,33 @@ int main()
 		coordinatePlayerY = p.getplayercoordinateY();
 
 		///////////////////////////////////////////Управление персонажем с анимацией////////////////////////////////////////////////////////////////////////
-		if (Keyboard::isKeyPressed(Keyboard::Left)) {
-			p.dir = 1; p.speed = 0.1;//dir =1 - направление вверх, speed =0.1 - скорость движения. Заметьте - время мы уже здесь ни на что не умножаем и нигде не используем каждый раз
-			CurrentFrame += 0.005*time;
-			if (CurrentFrame > 10) CurrentFrame -= 10;
-			p.sprite.setTextureRect(IntRect(110 + 110 * int(CurrentFrame), 0, -110, 110));
+		if (p.life){
+			if (Keyboard::isKeyPressed(Keyboard::Left)) {
+				p.dir = 1; p.speed = 0.1;//dir =1 - направление вверх, speed =0.1 - скорость движения. Заметьте - время мы уже здесь ни на что не умножаем и нигде не используем каждый раз
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 10) CurrentFrame -= 10;
+				p.sprite.setTextureRect(IntRect(110 + 110 * int(CurrentFrame), 0, -110, 110));
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Right)) {
+				p.dir = 0; p.speed = 0.1;//направление вправо, см выше
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 10) CurrentFrame -= 10;
+				p.sprite.setTextureRect(IntRect(0 + 110 * int(CurrentFrame), 0, 110, 110));
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Up)) {
+				p.dir = 3; p.speed = 0.1;//направление вниз, см выше
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 12) CurrentFrame -= 12;
+				p.sprite.setTextureRect(IntRect(0 + 75 * int(CurrentFrame), 1980, 75, 140));
+			}
+			if (Keyboard::isKeyPressed(Keyboard::Down)) {
+				p.dir = 2; p.speed = 0.1;//направление вверх, см выше
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 12) CurrentFrame -= 12;
+				p.sprite.setTextureRect(IntRect(900 - 75 * int(CurrentFrame), 1980, -75, 140));
+			}
+			getplayercoordinateforview(p.getplayercoordinateX(), p.getplayercoordinateY());
 		}
-		if (Keyboard::isKeyPressed(Keyboard::Right)) {
-			p.dir = 0; p.speed = 0.1;//направление вправо, см выше
-			CurrentFrame += 0.005*time;
-			if (CurrentFrame > 10) CurrentFrame -= 10;
-			p.sprite.setTextureRect(IntRect(0 + 110 * int(CurrentFrame), 0, 110, 110));
-		}
-		if (Keyboard::isKeyPressed(Keyboard::Up)) {
-			p.dir = 3; p.speed = 0.1;//направление вниз, см выше
-			CurrentFrame += 0.005*time;
-			if (CurrentFrame > 12) CurrentFrame -= 12;
-			p.sprite.setTextureRect(IntRect(0 + 75 * int(CurrentFrame), 1980, 75, 140));
-		}
-		if (Keyboard::isKeyPressed(Keyboard::Down)) {
-			p.dir = 2; p.speed = 0.1;//направление вверх, см выше
-			CurrentFrame += 0.005*time;
-			if (CurrentFrame > 12) CurrentFrame -= 12;
-			p.sprite.setTextureRect(IntRect(900 - 75 * int(CurrentFrame), 1980, -75, 140));
-		}
-		getplayercoordinateforview(coordinatePlayerX, coordinatePlayerY);
 		p.update(time);//оживляем объект p класса Player с помощью времени sfml, передавая время в качестве параметра функции update. благодаря этому персонаж может двигаться
 		
 		
@@ -170,16 +189,17 @@ int main()
 			if (TileMap[i][j] == ' ')  s_map.setTextureRect(IntRect(0, 0, 32, 32)); //если встретили символ пробел, то рисуем 1й квадратик
 			if (TileMap[i][j] == 's')  s_map.setTextureRect(IntRect(32, 0, 32, 32));//если встретили символ s, то рисуем 2й квадратик
 			if ((TileMap[i][j] == '0')) s_map.setTextureRect(IntRect(64, 0, 32, 32));//если встретили символ 0, то рисуем 3й квадратик
-
+			if ((TileMap[i][j] == 'f')) s_map.setTextureRect(IntRect(96, 0, 32, 32));//добавили цветок
+			if ((TileMap[i][j] == 'h')) s_map.setTextureRect(IntRect(128, 0, 32, 32));//и сердечко
 
 			s_map.setPosition(j * 32, i * 32);//по сути раскидывает квадратики, превращая в карту. то есть задает каждому из них позицию. если убрать, то вся карта нарисуется в одном квадрате 32*32 и мы увидим один квадрат
 
 			window.draw(s_map);//рисуем квадратики на экран
 		}
 
-		std::ostringstream playerScoreString;    // объявили переменную
-		playerScoreString << p.playerScore;		//занесли в нее число очков, то есть формируем строку
-		text.setString("Собрано камней:" + playerScoreString.str());//задаем строку тексту и вызываем сформированную выше строку методом .str() 
+		std::ostringstream playerHealthString,gameTimeString;    // объявили переменную
+		playerHealthString << p.health, gameTimeString << gameTime;		//занесли в нее число очков, то есть формируем строку
+		text.setString("Health:" + playerHealthString.str() + "\nTime: " + gameTimeString.str());//задаем строку тексту и вызываем сформированную выше строку методом .str() 
 		text.setPosition(view.getCenter().x - 165, view.getCenter().y - 200);//задаем позицию текста, отступая от центра камеры
 		window.draw(text);//рисую этот текст
 
