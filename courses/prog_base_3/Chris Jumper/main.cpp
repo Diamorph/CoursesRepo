@@ -758,7 +758,7 @@ int main()
 	easyEnemyImage.createMaskFromColor(Color(255, 0, 0));//маска по цвету
 
 
-	Player p(heroImage, 250, 500, 70.0, 120.0, "Player1");//объект класса игрока
+	Player p(heroImage, 700, 500, 70.0, 120.0, "Player1");//объект класса игрока
 	
 	Enemy easyEnemy(easyEnemyImage, 850, 671, 200, 97, "EasyEnemy");//простой враг, объект класса врага
 
