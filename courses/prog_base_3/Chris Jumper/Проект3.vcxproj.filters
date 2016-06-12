@@ -50,5 +50,8 @@
     <ClInclude Include="TinyXML\tinyxml.h">
       <Filter>Файлы исходного кода</Filter>
     </ClInclude>
+    <ClInclude Include="LifeBar.h">
+      <Filter>Файлы исходного кода</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

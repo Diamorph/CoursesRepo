@@ -261,11 +261,13 @@ if (p.life){
 */
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "map.h"
 #include "view.h"
 #include <iostream>
 #include <sstream>
 #include "mission.h"
+#include "LifeBar.h"
 #include "level.h"
 #include <vector>
 #include <list>
@@ -553,6 +555,9 @@ public:
 		FloatRect getRect(){//ф-ция получения прямоугольника. его коорд,размеры (шир,высот).
 			return FloatRect(x, y, w, h);//эта ф-ция нужна для проверки столкновений 
 		}
+		int getHealth(){
+			return health;
+		}
 };
 
 
@@ -610,6 +615,7 @@ class Player :public Entity {
 public:
 	enum { left, right, up, down, jump, stay } state;//добавляем тип перечисления - состояние объекта
 	int playerScore;//эта переменная может быть только у игрока
+	bool isShoot = false;
 
 	Player(Image &image, String Name, Level &lvl, float X, float Y, int W, int H) :Entity(image, Name, X, Y, W, H){
 		playerScore = 0; state = stay; obj = lvl.GetAllObjects();//инициализируем.получаем все объекты для взаимодействия персонажа с картой
@@ -634,6 +640,9 @@ public:
 			if (Keyboard::isKeyPressed(Keyboard::Down)) {
 				state = down;
 			}
+			//if (Keyboard::isKeyPressed(Keyboard::F)){
+				//isShoot = true;
+			//}
 		}
 	}
 
@@ -695,6 +704,53 @@ public:
 		dy = dy + 0.0015*time;//постоянно притягиваемся к земле
 	}
 };
+
+class Bullet :public Entity{//класс пули
+public:
+	int direction;//направление пули
+
+	Bullet(Image &image, String Name, Level &lvl, float X, float Y, int W, int H, int dir) :Entity(image, Name, X, Y, W, H){//всё так же, только взяли в конце состояние игрока (int dir)
+		obj = lvl.GetObjects("solid");//инициализируем .получаем нужные объекты для взаимодействия пули с картой
+		x = X;
+		y = Y;
+		direction = dir;
+		speed = 0.8;
+		w = h = 16;
+		life = true;
+		//выше инициализация в конструкторе
+	}
+
+
+	void update(float time)
+	{
+		switch (direction)
+		{
+		case 0: dx = -speed; dy = 0;   break;//интовое значение state = left
+		case 1: dx = speed; dy = 0;   break;//интовое значение state = right
+		case 2: dx = 0; dy = -speed;   break;//интовое значение state = up
+		case 3: dx = 0; dy = -speed;   break;//интовое значение не имеющее отношения к направлению, пока просто стрельнем вверх, нам сейчас это не важно
+		case 4: dx = 0; dy = -speed;   break;//интовое значение не имеющее отношения к направлению, пока просто стрельнем вверх, нам сейчас это не важно
+		case 5: dx = 0; dy = -speed;   break;//интовое значение не имеющее отношения к направлению, пока просто стрельнем вверх, нам сейчас это не важно
+		}
+
+		x += dx*time;//само движение пули по х
+		y += dy*time;//по у
+
+		if (x <= 0) x = 1;// задержка пули в левой стене, чтобы при проседании кадров она случайно не вылетела за предел карты и не было ошибки
+		if (y <= 0) y = 1;
+
+		for (int i = 0; i < obj.size(); i++) {//проход по объектам solid
+			if (getRect().intersects(obj[i].rect)) //если этот объект столкнулся с пулей,
+			{
+				life = false;// то пуля умирает
+			}
+		}
+
+		sprite.setPosition(x + w / 2, y + h / 2);//задается позицию пуле
+	}
+};
+
+
 
 /*class Player {
 public:
@@ -788,6 +844,11 @@ int main()
 	Level lvl;//создали экземпляр класса уровень
 	lvl.LoadFromFile("map.tmx");//загрузили в него карту, внутри класса с помощью методов он ее обработает.
 
+	Music music;//создаем объект музыки
+	music.openFromFile("sounds/01.ogg");//загружаем файл
+	music.play();//воспроизводим музыку
+	music.setLoop(true);
+
 	Image map_image;
 	map_image.loadFromFile("images/map.png");
 	Texture map;
@@ -798,15 +859,27 @@ int main()
 	Image heroImage;
 	heroImage.loadFromFile("images/capitan.png");
 
+	Image BulletImage;//изображение для пули
+	BulletImage.loadFromFile("images/bullet.png");//загрузили картинку в объект изображения
+	BulletImage.createMaskFromColor(Color(0, 0, 0));//маска для пули по черному цвету
+
 	Image easyEnemyImage;
 	easyEnemyImage.loadFromFile("images/shamaich.png");
 	easyEnemyImage.createMaskFromColor(Color(255, 0, 0));//маска по цвету
 
+
+	SoundBuffer shootBuffer;//создаём буфер для звука
+	shootBuffer.loadFromFile("sounds/shoot.wav");//загружаем в него звук
+	Sound shoot(shootBuffer);//создаем звук и загружаем в него звук из буфера
+
+
 	std::list<Entity*>  entities;//создаю список, сюда буду кидать объекты.например врагов.
 	std::list<Entity*>::iterator it;//итератор чтобы проходить по эл-там списка
+	std::list<Entity*>::iterator it2;//второй итератор.для взаимодействия между объектами списка
 
 	
 
+	LifeBar lifeBarPlayer;//экземпляр класса полоски здоровья
 	Object player = lvl.GetObject("player");//объект игрока на нашей карте.задаем координаты игроку в начале при помощи него
 	//Object easyEnemyObject = lvl.GetObject("easyEnemy");//объект легкого врага на нашей карте.задаем координаты игроку в начале при помощи него
 
@@ -834,6 +907,19 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::F)
+				{
+					entities.push_back(new Bullet(BulletImage, "Bullet", lvl, p.x, p.y, 16, 16, p.state));
+					shoot.play();//играем звук пули
+				}
+			}
+
+			//if (p.isShoot == true) { 
+				//p.isShoot = false; 
+				//entities.push_back(new Bullet(BulletImage, "Bullet", lvl, p.x, p.y, 16, 16, p.state)); }//если выстрелили, то появляется пуля. enum передаем как int 
+				
 		}
 		//p.update(time);// Player update function
 		//for (it = entities.begin(); it != entities.end(); it++) { (*it)->update(time); }//для всех элементов списка(пока это только враги,но могут быть и пули к примеру) активируем ф-цию update
@@ -844,6 +930,7 @@ int main()
 			b->update(time);//вызываем ф-цию update для всех объектов (по сути для тех, кто жив)
 			if (b->life == false)	{ it = entities.erase(it); delete b; }// если этот объект мертв, то удаляем его
 			else it++;//и идем курсором (итератором) к след объекту. так делаем со всеми объектами списка
+
 		}
 
 		/*for (it = entities.begin(); it != entities.end(); it++)//проходимся по эл-там списка
@@ -886,6 +973,8 @@ int main()
 				/*}
 			}
 		}*/
+
+		
 		for (it = entities.begin(); it != entities.end(); it++)
 		{
 			if ((*it)->getRect().intersects(p.getRect()))
@@ -904,9 +993,18 @@ int main()
 						p.health -= 5;
 					}
 				}
+				for (it2 = entities.begin(); it2 != entities.end(); it2++){
+					if ((*it)->getRect() != (*it2)->getRect())//при этом это должны быть разные прямоугольники
+					if (((*it)->getRect().intersects((*it2)->getRect())) && ((*it)->name == "EasyEnemy") && ((*it2)->name == "EasyEnemy"))//если столкнулись два объекта и они враги
+					{
+						(*it)->dx *= -1;//меняем направление движения врага
+						(*it)->sprite.scale(-1, 1);//отражаем спрайт по горизонтали
+					}
+				}
 			}
 		}
 
+		lifeBarPlayer.update(p.getHealth());
 
 		p.update(time);// Player update function
 		window.setView(view);
@@ -930,6 +1028,7 @@ int main()
 			for (it = entities.begin(); it != entities.end(); it++){
 			window.draw((*it)->sprite); //рисуем entities объекты (сейчас это только враги)
 		}
+		lifeBarPlayer.draw(window);//рисуем полоску здоровья
 		//window.draw(easyEnemy.sprite);
 		window.draw(p.sprite);
 		window.display();
