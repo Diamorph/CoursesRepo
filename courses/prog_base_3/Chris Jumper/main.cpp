@@ -535,7 +535,7 @@ public:
 	std::vector<Object> obj;//вектор объектов карты
 	float dx, dy, x, y, speed, moveTimer;//добавили переменную таймер для будущих целей
 	int w, h, health;
-	bool life, isMove, onGround;
+	bool life, isMove, onGround, kickL, kickR, kickUp;
 
 	virtual void update(float time) = 0;
 	Texture texture;
@@ -545,6 +545,7 @@ public:
 		x = X; y = Y; w = W; h = H; name = Name; moveTimer = 0;
 		speed = 0; health = 100; dx = 0; dy = 0;
 		life = true; onGround = false; isMove = false;
+		kickL = false; kickR = false; kickUp = false;
 		texture.loadFromImage(image);
 		sprite.setTexture(texture);
 		sprite.setOrigin(w / 2, h / 2);
@@ -674,6 +675,14 @@ public:
 		case down: dx = 0; break;//будет состояние во время спуска персонажа (например по лестнице)
 		case stay: break;//и здесь тоже		
 		}
+		if (kickUp) { dy = -0.65; kickUp = false; }
+		if (kickR) {
+			dx = 0.3;
+		}
+		if (kickL) {
+			dx = -0.3;
+		}
+		if (onGround) { kickR = false; kickL = false; }
 		x += dx*time;
 		checkCollisionWithMap(dx, 0);//обрабатываем столкновение по Х
 		y += dy*time;
@@ -837,7 +846,7 @@ int main()
 			else it++;//и идем курсором (итератором) к след объекту. так делаем со всеми объектами списка
 		}
 
-		for (it = entities.begin(); it != entities.end(); it++)//проходимся по эл-там списка
+		/*for (it = entities.begin(); it != entities.end(); it++)//проходимся по эл-там списка
 		{
 			if ((*it)->getRect().intersects(p.getRect()))//если прямоугольник спрайта объекта пересекается с игроком
 			{
@@ -846,6 +855,53 @@ int main()
 					if ((p.dy>0) && (p.onGround == false)) { (*it)->dx = 0; p.dy = -0.2; (*it)->health = 0; }//если прыгнули на врага,то даем врагу скорость 0,отпрыгиваем от него чуть вверх,даем ему здоровье 0
 					else {
 						p.health -= 5;	//иначе враг подошел к нам сбоку и нанес урон
+					}
+				}
+			}
+		}*/
+		/*for (it = entities.begin(); it != entities.end(); it++)//проходимся по эл-там списка
+		{
+			if ((*it)->getRect().intersects(p.getRect()))//если прямоугольник спрайта объекта пересекается с игроком
+			{
+				if ((*it)->name == "EasyEnemy"){//и при этом имя объекта EasyEnemy,то..
+					if ((*it)->dx>0)//если враг идет вправо
+					{
+						/*std::cout << "(*it)->x" << (*it)->x << "\n";//коорд игрока
+						std::cout << "p.x" << p.x << "\n\n";//коорд врага
+
+						(*it)->x = p.x - (*it)->w; //отталкиваем его от игрока влево (впритык)
+						(*it)->dx = 0;//останавливаем
+
+						std::cout << "new (*it)->x" << (*it)->x << "\n";//новая коорд врага
+						std::cout << "new p.x" << p.x << "\n\n";//новая коорд игрока (останется прежней)*/
+					/*}
+					if ((*it)->dx < 0)//если враг идет влево
+					{
+						/*(*it)->x = p.x + p.w; //аналогично - отталкиваем вправо
+						(*it)->dx = 0;//останавливаем*/
+					/*}
+					///////выталкивание игрока
+					/*if (p.dx < 0) { p.x = (*it)->x + (*it)->w; }//если столкнулись с врагом и игрок идет влево то выталкиваем игрока
+					if (p.dx > 0) { p.x = (*it)->x - p.w; }//если столкнулись с врагом и игрок идет вправо то выталкиваем игрока*/
+				/*}
+			}
+		}*/
+		for (it = entities.begin(); it != entities.end(); it++)
+		{
+			if ((*it)->getRect().intersects(p.getRect()))
+			{
+				if ((*it)->name == "EasyEnemy")
+				{
+					if ((p.dy>0) && (p.onGround == false)) { (*it)->dx = 0; p.dy = -0.2; (*it)->health = 0; }//если прыгнули на врага,то даем врагу скорость 0,отпрыгиваем от него чуть вверх,даем ему здоровье 0
+					if ((*it)->dx > 0) {
+						p.kickR = true; p.kickUp = true;
+						p.onGround = false;
+						p.health -= 5;
+					}
+					if ((*it)->dx < 0) {
+						p.kickL = true; p.kickUp = true;
+						p.onGround = false;
+						p.health -= 5;
 					}
 				}
 			}
