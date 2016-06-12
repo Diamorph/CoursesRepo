@@ -259,6 +259,7 @@ if (p.life){
 	return 0;
 }
 */
+#pragma once 
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -267,6 +268,7 @@ if (p.life){
 #include <iostream>
 #include <sstream>
 #include "mission.h"
+#include "menu.h"
 #include "LifeBar.h"
 #include "level.h"
 #include <vector>
@@ -614,7 +616,8 @@ public:
 class Player :public Entity {
 public:
 	enum { left, right, up, down, jump, stay } state;//добавляем тип перечисления - состояние объекта
-	int playerScore;//эта переменная может быть только у игрока
+	int playerScore;
+	float CurrentFrame = 0;//эта переменная может быть только у игрока
 	bool isShoot = false;
 
 	Player(Image &image, String Name, Level &lvl, float X, float Y, int W, int H) :Entity(image, Name, X, Y, W, H){
@@ -624,21 +627,33 @@ public:
 		}
 	}
 
-	void control(){
+	void control(float time){
 		if (Keyboard::isKeyPressed){//если нажата клавиша
 			if (Keyboard::isKeyPressed(Keyboard::Left)) {//а именно левая
 				state = left; speed = 0.1;
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 10) CurrentFrame -= 10;
+				sprite.setTextureRect(IntRect(110 + 110 * int(CurrentFrame), 0, -110, 110));
 			}
 			if (Keyboard::isKeyPressed(Keyboard::Right)) {
 				state = right; speed = 0.1;
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 10) CurrentFrame -= 10;
+				sprite.setTextureRect(IntRect(0 + 110 * int(CurrentFrame), 0, 110, 110));
 			}
 
 			if ((Keyboard::isKeyPressed(Keyboard::Up)) && (onGround)) {//если нажата клавиша вверх и мы на земле, то можем прыгать
 				state = jump; dy = -0.7; onGround = false;//увеличил высоту прыжка
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 12) CurrentFrame -= 12;
+				sprite.setTextureRect(IntRect(0 + 75 * int(CurrentFrame), 1980, 75, 140));
 			}
 
 			if (Keyboard::isKeyPressed(Keyboard::Down)) {
 				state = down;
+				CurrentFrame += 0.005*time;
+				if (CurrentFrame > 12) CurrentFrame -= 12;
+				sprite.setTextureRect(IntRect(900 - 75 * int(CurrentFrame), 1980, -75, 140));
 			}
 			//if (Keyboard::isKeyPressed(Keyboard::F)){
 				//isShoot = true;
@@ -675,7 +690,7 @@ public:
 
 	void update(float time)
 	{
-		control();//функция управления персонажем
+		control(time);//функция управления персонажем
 		switch (state)//тут делаются различные действия в зависимости от состояния
 		{
 		case right:dx = speed; break;//состояние идти вправо
@@ -749,6 +764,52 @@ public:
 		sprite.setPosition(x + w / 2, y + h / 2);//задается позицию пуле
 	}
 };
+
+void menu(RenderWindow & window) {
+	Texture menuTexture1, menuTexture2, menuTexture3, aboutTexture, menuBackground;
+	menuTexture1.loadFromFile("images/1.png");
+	menuTexture2.loadFromFile("images/2.png");
+	menuTexture3.loadFromFile("images/3.png");
+	aboutTexture.loadFromFile("images/about.png");
+	menuBackground.loadFromFile("images/menu_fon.jpg");
+	Sprite menu1(menuTexture1), menu2(menuTexture2), menu3(menuTexture3), about(aboutTexture), menuBg(menuBackground);
+	bool isMenu = 1;
+	int menuNum = 0;
+	menu1.setPosition(100, 30);
+	menu2.setPosition(100, 90);
+	menu3.setPosition(100, 150);
+	menuBg.setPosition(345, 0);
+
+	//////////////////////////////МЕНЮ///////////////////
+	while (isMenu)
+	{
+		menu1.setColor(Color::White);
+		menu2.setColor(Color::White);
+		menu3.setColor(Color::White);
+		menuNum = 0;
+		window.clear(Color(129, 181, 221));
+
+		if (IntRect(100, 30, 300, 50).contains(Mouse::getPosition(window))) { menu1.setColor(Color::Blue); menuNum = 1; }
+		if (IntRect(100, 90, 300, 50).contains(Mouse::getPosition(window))) { menu2.setColor(Color::Blue); menuNum = 2; }
+		if (IntRect(100, 150, 300, 50).contains(Mouse::getPosition(window))) { menu3.setColor(Color::Blue); menuNum = 3; }
+
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (menuNum == 1) isMenu = false;//если нажали первую кнопку, то выходим из меню 
+			if (menuNum == 2) { window.draw(about); window.display(); while (!Keyboard::isKeyPressed(Keyboard::Escape)); }
+			if (menuNum == 3)  { window.close(); isMenu = false; }
+
+		}
+
+		window.draw(menuBg);
+		window.draw(menu1);
+		window.draw(menu2);
+		window.draw(menu3);
+
+		window.display();
+	}
+	////////////////////////////////////////////////////
+}
 
 
 
@@ -838,6 +899,7 @@ public:
 int main()
 {
 	RenderWindow window(VideoMode(640, 480), "Chris Jumper");
+	menu(window);//вызов меню
 	view.reset(FloatRect(0, 0, 640, 480));
 
 
