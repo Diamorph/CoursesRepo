@@ -36,4 +36,3 @@ int list_findIndex(list_t * self, void * data);
 int list_getSize(list_t * self);
 
 #endif // LIST_H_INCLUDED
-
