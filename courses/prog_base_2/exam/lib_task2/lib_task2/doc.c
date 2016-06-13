@@ -9,26 +9,22 @@
 
 struct user_s {
     user_type_t type;
-    char name[MAX_NAME];
+    char name;
 };
 
-user_t user_new (char * nam) {
-    user_t self = malloc (sizeof(struct user_s));
-    strcpy(self->name, nam);
+user_t * user_new(user_type_t type,const char * name) {
+    user_t * self = malloc(sizeof(user_t));
+    self->type = type;
+    sprintf(self->name,name);
     return self;
-}
-/*user_t user_new(user_type_t type,const char * name) {
-    user_t self = malloc(sizeof(struct user_s));
-    strcpy(self->name,name);
-    return self;
-};*/
+};
 
 void user_free(user_t * self) {
     free(self);
 };
 
 struct doc_s {
-    char * name;
+    char name;
     list_t * users;
 };
 
@@ -59,9 +55,6 @@ user_t * DOC_removeUser(doc_t * self) {
     return user;
 }
 
-char* DOC_getName(doc_t * self){
-    //puts(self->name);
-    char * res = self->name;
-    return res;
+char DOC_getName(doc_t * self){
+    return self->name;
 }
-

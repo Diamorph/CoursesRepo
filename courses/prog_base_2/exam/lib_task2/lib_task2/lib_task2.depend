@@ -6,5 +6,15 @@
 1465810826 c:\lib_task2\lib_task2\list.h
 	<stdlib.h>
 
-1385320480 source:c:\lib_task2\lib_task2\main.c
+1465819196 source:c:\lib_task2\lib_task2\main.c
+	<strings.h>
+	<stdlib.h>
+	<stdlib.h>
+	"doc.h"
+
+1465819345 c:\lib_task2\lib_task2\doc.h
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+	"list.h"
 
