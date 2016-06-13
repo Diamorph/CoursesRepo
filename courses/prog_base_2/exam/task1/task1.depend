@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1465809842 source:c:\task1\main.c
+	<windows.h>
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<cmocka_pbc.h>
+	<cmocka.h>
+	"test.h"
+
+1424096216 c:\program files (x86)\cmocka\include\cmocka.h
+
+1423652600 c:\program files (x86)\cmocka\include\cmocka_pbc.h
+	<assert.h>
+
+1465806900 c:\task1\test.h
+	<stdlib.h>
+	<string.h>
+
+1465810006 source:c:\task1\test.c
+	"test.h"
+
