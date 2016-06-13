@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1465810819 source:c:\lib_task2\lib_task2\list.c
+	<stdlib.h>
+	"list.h"
+
+1465810826 c:\lib_task2\lib_task2\list.h
+	<stdlib.h>
+
+1385320480 source:c:\lib_task2\lib_task2\main.c
+
