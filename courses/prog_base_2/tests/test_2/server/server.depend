@@ -124,3 +124,35 @@
 	<stdio.h>
 	"scientists.h"
 
+1463802679 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1463802679 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\cjson.h
+
+1464432278 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\server.c
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	"string.h"
+	"socket.h"
+	"server.h"
+	"cJSON.h"
+
+1464414254 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\socket.h
+
+1464431871 c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\server.h
+	<stdio.h>
+	<stdlib.h>
+	"socket.h"
+
+1464414304 source:c:\users\admin\documents\repos\coursesrepo\courses\prog_base_2\tests\test_2\server\socket.c
+	<winsock2.h>
+	"socket.h"
+

@@ -1,0 +1,117 @@
+# depslib dependency file v1.0
+1458404680 source:c:\files\institute\2 семестр\Основи програмування\labs\lab4\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1464726227 c:\files\institute\2 семестр\Основи програмування\labs\lab4\cjson.h
+	<stdlib.h>
+
+1464906424 source:c:\files\institute\2 семестр\Основи програмування\labs\lab4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"cJSON.h"
+	"teacher.h"
+	"server.h"
+
+1464725900 source:c:\files\institute\2 семестр\Основи програмування\labs\lab4\teacher.c
+	"teacher.h"
+
+1464725900 c:\files\institute\2 семестр\Основи програмування\labs\lab4\teacher.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"list.h"
+
+1464716524 c:\files\institute\2 семестр\Основи програмування\labs\lab4\list.h
+
+1464725973 source:c:\files\institute\2 семестр\Основи програмування\labs\lab4\parse.c
+	"cJSON.h"
+	"parse.h"
+
+1464726031 c:\files\institute\2 семестр\Основи програмування\labs\lab4\parse.h
+	"teacher.h"
+
+1464414304 source:c:\files\institute\2 семестр\Основи програмування\labs\lab4\socket.c
+	<winsock2.h>
+	"socket.h"
+
+1464414254 c:\files\institute\2 семестр\Основи програмування\labs\lab4\socket.h
+
+1464906350 c:\files\institute\2 семестр\Основи програмування\labs\lab4\server.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<ctype.h>
+	<winsock2.h>
+	"socket.h"
+	"teacher.h"
+	"cJSON.h"
+
+1464906350 source:c:\files\institute\2 семестр\Основи програмування\labs\lab4\server.c
+	"server.h"
+
+1458401080 source:d:\Новая папка (3)\lab4\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1464726227 d:\Новая папка (3)\lab4\cjson.h
+	<stdlib.h>
+
+1464906424 source:d:\Новая папка (3)\lab4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"cJSON.h"
+	"teacher.h"
+	"server.h"
+
+1464725900 d:\Новая папка (3)\lab4\teacher.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"list.h"
+
+1464716524 d:\Новая папка (3)\lab4\list.h
+
+1464906350 d:\Новая папка (3)\lab4\server.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<ctype.h>
+	<winsock2.h>
+	"socket.h"
+	"teacher.h"
+	"cJSON.h"
+
+1464414254 d:\Новая папка (3)\lab4\socket.h
+
+1464725973 source:d:\Новая папка (3)\lab4\parse.c
+	"cJSON.h"
+	"parse.h"
+
+1464726031 d:\Новая папка (3)\lab4\parse.h
+	"teacher.h"
+
+1464414304 source:d:\Новая папка (3)\lab4\socket.c
+	<winsock2.h>
+	"socket.h"
+
+1464725900 source:d:\Новая папка (3)\lab4\teacher.c
+	"teacher.h"
+
+1465037188 source:d:\Новая папка (3)\lab4\server.c
+	"server.h"
+

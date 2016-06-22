@@ -40,7 +40,7 @@ int main()
 #include <windows.h>
 #include "cJSON.h"
 #include <time.h>
-#include <sqlite3.h>
+//#include <sqlite3.h>
 #include <string.h>
 
 #include <sys/stat.h>
@@ -186,7 +186,7 @@ int main(void) {
             server_sent(client,jsonSM);
         }
 
-            if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/database") == 0 )
+          /*  if (strcmp(rs.method,"GET") == 0 && strcmp(rs.uri, "/database") == 0 )
         {
             list_t * list = list_new();
             const char * dbFile = "db.db";
