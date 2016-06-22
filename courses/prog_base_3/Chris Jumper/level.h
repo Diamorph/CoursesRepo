@@ -33,6 +33,7 @@ class Level
 public:
 	bool LoadFromFile(std::string filename);
 	Object GetObject(std::string name);
+	//int levelNumber = 1;
 	std::vector<Object> GetObjects(std::string name);
 	std::vector<Object> GetAllObjects();
 	void Draw(sf::RenderWindow &window);

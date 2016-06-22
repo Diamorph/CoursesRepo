@@ -1,51 +1,66 @@
-﻿Сборка начата 12.06.2016 15:56:10.
+﻿Сборка начата 19.06.2016 13:23:05.
      1>Проект "C:\Users\admin\Documents\Visual Studio 2013\Projects\Проект3\Проект3\Проект3.vcxproj" в узле 2 (целевые объекты Build).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Проект3.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\SFML-2.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_DYNAMIC /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\map.h(39): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\view.h(23): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\view.h(27): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\view.h(31): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\view.h(34): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\lifebar.h(31): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(60): warning C4244: return: преобразование "double" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(144): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(145): warning C4244: =: преобразование "float" в "int", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(185): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(242): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(263): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(61): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(145): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(146): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(186): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(243): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(264): warning C4244: =: преобразование "int" в "float", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(265): warning C4244: =: преобразование "int" в "float", возможна потеря данных
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(266): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(309): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(318): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(340): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(267): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(310): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(319): warning C4018: <: несоответствие типов со знаком и без знака
      1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(341): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(553): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(556): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(570): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(587): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(594): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(595): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(628): warning C4551: в вызове функции отсутствует список аргументов
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(630): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(633): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(637): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(663): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(687): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(689): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(692): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(704): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(717): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(742): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(890): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(900): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(984): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(312): warning C4715: Level::GetObject: значение возвращается не при всех путях выполнения
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(342): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(55): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(59): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(65): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(72): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(73): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(80): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(85): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(93): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(98): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(116): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(131): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(152): warning C4551: в вызове функции отсутствует список аргументов
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(154): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(155): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(160): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(161): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(167): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(168): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(175): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(184): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(208): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(210): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(213): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(224): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(237): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(261): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(402): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(405): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(412): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(447): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(524): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(539): warning C4305: =: усечение из "double" к "float"
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\level.h(313): warning C4715: Level::GetObject: значение возвращается не при всех путях выполнения
+     1>c:\users\admin\documents\visual studio 2013\projects\проект3\проект3\main.cpp(592): warning C4715: startGame: значение возвращается не при всех путях выполнения
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\admin\Documents\Visual Studio 2013\Projects\Проект3\Debug\Chris Jumper.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\admin\Documents\Visual Studio 2013\Projects\Проект3\Debug\Chris Jumper.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\admin\Documents\Visual Studio 2013\Projects\Проект3\Debug\Chris Jumper.lib" /MACHINE:X86 Debug\main.obj
+         Debug\menu.obj
          Debug\tinystr.obj
          Debug\tinyxml.obj
          Debug\tinyxmlerror.obj
@@ -55,4 +70,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:05.49
+Затраченное время: 00:00:04.65

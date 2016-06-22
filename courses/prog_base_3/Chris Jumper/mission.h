@@ -16,16 +16,11 @@ int getCurrentMission(int x)//ф-ция номера миссия, которая меняет номер миссии, 
 
 /////////////////////////////////////ТЕКСТ МИССИИ/////////////////////////////////
 std::string getTextMission(int currentMission) {
+	std::string missionText = "         Управление\nUp - прыжок\nRight - вправо\nLeft - влево\nF - выстрел\nЛюбой враг умирает\n от выстрела\n -> easy mode\nВрагов можно убивать \nпрыгая на них\n -> hard mode\nGOOD LUCK  ";//текст миссии и его инициализация
+	return missionText;//ф-ция возвращает текст
+};
 
-	std::string missionText = "";//текст миссии и его инициализация
-
-	switch (currentMission)//принимается номер миссии и в зависимости от него переменной missionText присваивается различный текст
-	{
-	case 0: missionText = "\nНачальный этап и \nинструкции к игре"; break;
-	case 1: missionText = "\nMission 1\n\nВот твоя первая\n миссия, на\n этом уровне \nтебе стоит опасаться\n ... бла-бла-бла ..."; break;
-	case 2: missionText = "\nMission 2\n Необходимо решить\n логическую задачку,\n чтобы пройти дальше "; break;
-	case 3: missionText = "\nИ так далее \nи тому подобное....."; break;
-	}
-
+std::string getDeadMessage() {
+	std::string missionText = "Вы умерли, попробуйте сначала";//текст миссии и его инициализация
 	return missionText;//ф-ция возвращает текст
 };
