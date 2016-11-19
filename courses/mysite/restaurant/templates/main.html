@@ -1,0 +1,37 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ресторан</title>
+
+</head>
+<body>
+<a href = "/">Головна</a>
+    <div class = "top-bar" >
+        <section class = "top-bar-section" >
+            <ul class = "right">
+                {% if username%}
+                <li><a href = "/auth/logout">Выйти({{username}})</a></li>
+                {% else %}
+                <li><a href = "/auth/login">Войти</a></li>
+                {% endif %}
+            </ul>
+        </section>
+    </div>
+{% block login %}
+    {%endblock%}
+
+{%block Cold_Dishes%}
+    {%endblock%}
+{% block First_courses %}
+    {%endblock%}
+{% block Hot_Appetizers %}
+    {%endblock%}
+{% block Salad %}
+    {%endblock%}
+
+
+
+</body>
+</html>

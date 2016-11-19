@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block First_courses %}
+{%for courses in first_course %}
+<img src = "{{courses.image.url}}">
+    <p>Назва :{{courses.name}}</p>
+    <p>Склад $:{{courses.consist}}</p>
+    <p>Вага:{{courses.weight}}</p>
+    <p>Ціна :{{courses.price}}</p>
+{% endfor%}
+{%endblock%}
