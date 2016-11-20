@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block Hot_Appetizers %}
 {%for hot_appetizers in hot %}
-<img src = "{{hot_appetizers.image.url}}">
+<p><img src = "{{hot_appetizers.image.url}}"></p>
     <p>Назва :{{hot_appetizers.name}}</p>
     <p>Склад $:{{hot_appetizers.consist}}</p>
     <p>Вага:{{hot_appetizers.weight}}</p>

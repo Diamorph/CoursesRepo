@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block Salad %}
 {%for i in salad %}
-<img src = "{{i.image.url}}">
+<p><img src = "{{i.image.url}}"></p>
     <p>Назва :{{i.name}}</p>
     <p>Склад $:{{i.consist}}</p>
     <p>Вага:{{i.weight}}</p>

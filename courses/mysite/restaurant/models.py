@@ -8,7 +8,7 @@ class Cold_Dishes(models.Model):
     weight = models.IntegerField(default = 0)
     price = models.FloatField(default = 0)
     consist = models.CharField(max_length = 100)
-    image = models.ImageField(upload_to='image/' , null = True)
+    image = models.ImageField(null = True, blank = True, upload_to='images/')
 
 
 class Salad(models.Model):
@@ -16,18 +16,18 @@ class Salad(models.Model):
     weight = models.IntegerField(default=0)
     price = models.FloatField(default=0)
     consist = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='image/', null=True)
+    image = models.ImageField(null = True, blank = True, upload_to='images/')
 
 class Hot_Appetizers(models.Model):
     name = models.CharField(max_length=30)
     weight = models.IntegerField(default=0)
     price = models.FloatField(default=0)
     consist = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='image/', null=True)
+    image = models.ImageField(null = True, blank = True, upload_to='images/')
 
 class First_Courses(models.Model):
     name = models.CharField(max_length=30)
     weight = models.IntegerField(default=0)
     price = models.FloatField(default=0)
     consist = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='image/', null=True)
+    image = models.ImageField(null = True, blank = True, upload_to='images/')

@@ -1,8 +1,5 @@
-from django.conf.urls import url
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.conf.urls.static import static
-from django.conf import settings
-
+from django.conf.urls import url, include
+from django.contrib import admin
 from . import views
 
 
@@ -12,10 +9,9 @@ urlpatterns = [
     url(r'^salad/$', views.Salad_view, name = 'main'),
     url(r'^first_courses/$', views.First_courses, name = 'main'),
     url(r'^$', views.hot_view),
+    url(r'^admin/', admin.site.urls),
+    url(r'^restaurant/', include('restaurant.urls')),
+    url(r'^auth/', include('login.urls')),
+    url(r'^', include('restaurant.urls')),
 
 ]
-
-if settings.DEBUG:
-    urlpatterns += staticfiles_urlpatterns() + static(
-    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-)

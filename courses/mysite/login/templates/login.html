@@ -3,15 +3,16 @@
     <div class = "large-3 columns">
         <form action = "/auth/login/" method ="post">
 
-            <label for = "username">Name</label>
+            <label for = "username">Логін</label>
             <input type = "text" name = "username" id = "username">
-            <label for = "password">Password</label>
+            <hr>
+            <label for = "password">Пароль</label>
             <input type = "password" name = "password"  id = "password">
             {% if login_error %}
                 <label class="error">{{login_error}}</label>
             {%endif%}
-            <input class = "button" type = "submit" value = "VXOD">
-            <div class = "label round secondary"><a href  = "/auth/register">Регистрация</a></div>
+            <input class = "button" type = "submit" value = "Вхід">
+            <div class = "label round secondary"><a href  = "/auth/register">Регістрація</a></div>
         </form>
          </div>
         {%endblock%}

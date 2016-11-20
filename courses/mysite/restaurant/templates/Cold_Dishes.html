@@ -2,7 +2,8 @@
 {% load staticfiles %}
 {% block Cold_Dishes %}
 {%for cold_dishes in dishes %}
-<img src = "{{cold_dishes.image.url}}">
+<!--<p> <img src="{{MEDIA_URL}}{{ article.article_image.url}}"></p>-->
+    <p><img src = "{{MEDIA_URL}}{{ cold_dishes.image.url}}"></p>
     <p>Назва :{{cold_dishes.name}}</p>
     <p>Склад $:{{cold_dishes.consist}}</p>
     <p>Вага:{{cold_dishes.weight}}</p>
