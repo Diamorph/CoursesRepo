@@ -34,6 +34,10 @@ def login(request):
         user = auth.authenticate(username=username , password=password)
         print(username)
         print(password)
+        request.session.set_expiry(7)
+        request.session['login'] = True
+        if ("login" not in request.session):
+            auth.logout(request)
         if user is not None and user.is_active:
             auth.login(request , user)
             return redirect('/')
@@ -47,5 +51,9 @@ def login(request):
 
 
 def logout(request):
+    #auth.logout(request)
+   # response = redirect('/')
+   # response.set_cookie(request, "You are logout")
+   # return response
     auth.logout(request)
     return redirect('/')
