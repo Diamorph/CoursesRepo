@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from restaurant import api_urls
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^restaurant/', include('restaurant.urls')),
     url(r'^auth/'  ,include('login.urls')),
+    url(r'^api/', include(api_urls)),
     url(r'^', include('restaurant.urls')),
 ]

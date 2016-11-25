@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import json
 from django.shortcuts import render, get_object_or_404 ,render_to_response
-from .models import Cold_Dishes, First_Courses, Salad, Hot_Appetizers
+from restaurant.models import Cold_Dishes, First_Courses, Salad, Hot_Appetizers
 from django.contrib import auth
 from django.shortcuts import render_to_response ,redirect , HttpResponse #render
 from django.contrib.auth.models import User
@@ -14,10 +15,17 @@ from django.contrib.auth.forms import UserCreationForm
 def cold_dishes(request, Cold_Dishes_id):
     return HttpResponse("You're looking at question %s." % Cold_Dishes_id)
 
+def Cold_dish_id(request, id):
+    args = {}
+    if request.method == 'GET':
+        return HttpResponse(json.dumps(Cold_Dishes.objects.get(id = int(id)).dict()), content_type='application/json')
+    #return render_to_response("Cold_Dishes.html" , {'dishes': [Cold_Dishes.objects.get(id = int(id))], 'username':auth.get_user(request).username})
+
 def Cold_dishes(request):
     args = {}
     if request.method == 'GET':
-        return render_to_response("Cold_Dishes.html" , {'dishes': Cold_Dishes.objects.all(), 'username':auth.get_user(request).username} , args)
+        return HttpResponse(json.dumps([i.dict() for i in Cold_Dishes.objects.all()]), content_type='application/json')
+        #return render_to_response("Cold_Dishes.html" , {'dishes': Cold_Dishes.objects.all(), 'username':auth.get_user(request).username} , args)
 
 def First_courses(request):
     args = {}

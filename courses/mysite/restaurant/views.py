@@ -10,6 +10,10 @@ from django.contrib import auth
 def cold_dishes(request, Cold_Dishes_id):
     return HttpResponse("You're looking at question %s." % Cold_Dishes_id)
 
+def Cold_dish_id(request, id):
+    return render_to_response("Cold_Dishes.html" , {'dishes': [Cold_Dishes.objects.get(id = int(id))], 'username':auth.get_user(request).username})
+
+
 def Cold_dishes(request):
     args = {}
     if request.method == 'GET':
