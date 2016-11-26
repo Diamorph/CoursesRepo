@@ -12,7 +12,9 @@ urlpatterns = [
     url(r'^hot_appetizers/$', views.Hot_appetizers, name = 'main'),
     url(r'^salad/$', views.Salad_view, name = 'main'),
     url(r'^first_courses/$', views.First_courses, name = 'main'),
-    url(r'^$', views.hot_view),
+   # url(r'^hot_appetizers/$', views.hot_view, name = 'main'),
+
+    url(r'^$', views.Menu),
 
 
 ]

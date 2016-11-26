@@ -23,5 +23,8 @@ urlpatterns = [
     url(r'^restaurant/', include('restaurant.urls')),
     url(r'^auth/'  ,include('login.urls')),
     url(r'^api/', include(api_urls)),
+    url(r'^menu/', include('restaurant.urls')),
+   # url(r'^menu/$', views.Menu, name='main'),
     url(r'^', include('restaurant.urls')),
+
 ]

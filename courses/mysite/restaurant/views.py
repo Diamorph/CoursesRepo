@@ -46,3 +46,8 @@ def hot_view(request):
 
     return render_to_response("Hot_Appetizers.html" , {'hot': Hot_Appetizers.objects.all() , 'username' : auth.get_user(request).username})
 
+def Menu(request):
+    args = {}
+    if request.method == 'GET':
+        return render_to_response("menu.html", {'username':auth.get_user(request).username}, args)
+
