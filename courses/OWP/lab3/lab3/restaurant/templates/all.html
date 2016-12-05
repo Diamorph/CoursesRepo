@@ -1,0 +1,20 @@
+{%load staticfiles%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+
+{% for i in rest %}
+<a href = "/rest/{{i.id}}">{{i.name}}</a>
+<p> Середній чек :{{i.check}}</p>
+<p> Рейтинг : {{i.rate}}</p>
+<p> Місто :{{i.city}}</p>
+<p> Дата відкриття :{{i.date}}</p>
+{% endfor %}
+
+</body>
+</html>

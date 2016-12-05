@@ -1,0 +1,20 @@
+{%load staticfiles%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+{% if rest %}
+<p>Назва:{{rest.name}}</p>
+<p> Середній чек:{{rest.check}}</p>
+<p> Рейтинг : {{rest.rate}}</p>
+<p> Місто :{{rest.city}}</p>
+<p> Дата відкриття :{{rest.date}}</p>
+{% endif %}
+
+
+</body>
+</html>

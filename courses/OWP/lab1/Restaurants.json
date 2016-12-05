@@ -1,0 +1,37 @@
+[{
+		"name": "rest1",
+		"rate": 8,
+		"check": 450,
+		"city": "Kyiv",
+		"date": "2000-01-01"
+
+	},
+
+	{
+
+		"name": "rest2",
+		"rate": 3,
+		"check": 45,
+		"city": "Kyiv",
+		"date": "2000-01-01"
+
+	},
+
+	{
+		"name": "rest3",
+		"rate": 4,
+		"check": 40,
+		"city": "Kyiv",
+		"date": "2000-01-01"
+	},
+
+	{
+		"name": "rest4",
+		"rate": 5,
+		"check": 404,
+		"city": "Kyiv",
+		"date": "2000-01-01"
+
+
+	}
+]

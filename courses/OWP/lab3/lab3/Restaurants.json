@@ -1,0 +1,88 @@
+[{
+		"name": "rest1",
+		"rate": 1,
+		"check": 10,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 1
+
+	},
+
+	{
+
+		"name": "rest2",
+		"rate": 2,
+		"check": 20,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 2
+
+	},
+
+	{
+		"name": "rest3",
+		"rate": 3,
+		"check": 30,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 3
+	},
+
+	{
+		"name": "rest4",
+		"rate": 4,
+		"check": 40,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 4
+	},
+    {
+		"name": "rest5",
+		"rate": 5,
+		"check": 50,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 5
+
+	},
+    {
+		"name": "rest6",
+		"rate": 6,
+		"check": 60,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 6
+	},
+    {
+		"name": "rest7",
+		"rate": 7,
+		"check": 70,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 7
+	},
+    {
+		"name": "rest8",
+		"rate": 8,
+		"check": 80,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 8
+	},
+ {
+		"name": "rest9",
+		"rate": 9,
+		"check": 90,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 9
+	},
+ {
+		"name": "rest10",
+		"rate": 10,
+		"check": 100,
+		"city": "Kyiv",
+		"date": "2000-01-01",
+		"id": 10
+	}
+]
