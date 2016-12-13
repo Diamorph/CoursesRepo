@@ -4,11 +4,21 @@
 <head>
 
 <link href="{% static '/css/bootstrap.min.css'%}" rel="stylesheet">
+<!--<link href="{% static '/css/style.css'%}" rel="stylesheet">-->
+
     <meta charset="UTF-8">
     <title>Ресторан</title>
 
 </head>
 <body>
+    
+      <div class="header">
+    <div id="header-text">
+      <h1>Вітряк</h1>
+      <h2>Швидко. Смачно. Дешево.</h2>
+    </div>
+  </div>
+    
     <nav role="navigation" class="navbar navbar-default">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -25,41 +35,51 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Головна</a></li>
       <li class="active"><a href="/menu">Меню</a></li>
+        {% if user.is_superuser %}
+      <li class="active"><a href="/restaurant/add">Додати страву</a></li>
+        {%endif%}
       <!--<li><a href="#">Статьи</a></li>
       <li><a href="#">Новости</a></li>
     </ul>-->
     <ul class="nav navbar-nav navbar-right">
-                {% if username%}
-                <li><a href = "/auth/logout">Вихід({{username}})</a></li>
+                {% if user.is_authenticated %}
+                <li><a href = "/auth/logout">Вихід({{user}})</a></li>
                 {% else %}
                 <li><a href = "/auth/login">Вхід</a></li>
                 {% endif %}
-    </ul>        
+    </ul>   
+      </ul>
   </div>
-        <!--<div class = "top-bar" >
-        <section class = "top-bar-section" >
-            <ul class = "right">
-                {% if username%}
-                <li><a href = "/auth/logout">Вихід({{username}})</a></li>
-                {% else %}
-                <li><a href = "/auth/login">Вхід</a></li>
-                {% endif %}
-            </ul>
-        </section>
-    </div>-->
 </nav>
-<!--<a href = "/">Головна</a>
-    <div class = "top-bar" >
-        <section class = "top-bar-section" >
-            <ul class = "right">
-                {% if username%}
-                <li><a href = "/auth/logout">Вихід({{username}})</a></li>
-                {% else %}
-                <li><a href = "/auth/login">Вхід</a></li>
-                {% endif %}
-            </ul>
-        </section>
-    </div>-->
+    <div class="main">
+        <form role="form" class="form-inline" method = "get" action="/restaurant/search/">
+ <div class="form-group">
+  <input type="text" class="form-control" required name="search" id="search" placeholder="Введіть назву страви">
+ </div>
+ <button type="submit" class="btn btn-success">Пошук</button>
+</form>
+
+
+
+<!--<form class="form-inline" method = "get" action="/restaurant/search/">
+    <div class="form-group">
+        <label for="search" class="col-sm-2 control-label">Пошук</label>
+  <div class="col-sm-5">
+   <input type="text" class="form-control" required name="search" id="search" placeholder="Введіть назву страви">
+  </div>
+        </div>
+    <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+   <button type="submit" class="btn btn-success">Пошук</button>
+  </div>
+ </div>
+</form>-->
+        <!--<form name="sh" method = "get" action="/restaurant/search/">
+    <input type="text" size="40" required name="search" id="search">
+    <input class  ="button" type = "submit"  value = "Пошук">
+</form>-->
+
+
 {% block login %}
     {%endblock%}
 
@@ -78,7 +98,10 @@
 {% block Menu %}
     {%endblock%}
 
+{%block add%}
+    {%endblock%}
 
+ </div>
 
 
 </body>

@@ -34,7 +34,7 @@ def login(request):
         user = auth.authenticate(username=username , password=password)
         print(username)
         print(password)
-        request.session.set_expiry(7)
+        request.session.set_expiry(300000)
         request.session['login'] = True
         if ("login" not in request.session):
             auth.logout(request)

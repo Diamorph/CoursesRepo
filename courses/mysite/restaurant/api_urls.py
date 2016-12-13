@@ -9,11 +9,13 @@ urlpatterns = [
     url(r'^hot_appetizers/$', api_views.Hot_appetizers, name ='main'),
     url(r'^salad/$', api_views.Salad_view, name ='main'),
     url(r'^first_courses/$', api_views.First_courses, name ='main'),
+    url(r'^first_course/(\d+)/$', api_views.First_course_id, name = 'main'),
     url(r'^$', api_views.hot_view),
     url(r'^auth/', include('login.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^restaurant/', include('restaurant.urls')),
     url(r'^auth/'  ,include('login.urls')),
     url(r'^', include('restaurant.urls')),
-
+    url(r'^labs/$', api_views.Labs, name ='main'),
+    url(r'^lab/(\d+)/$', api_views.Lab_id,name = 'main'),
 ]

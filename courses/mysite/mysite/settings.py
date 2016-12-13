@@ -46,7 +46,6 @@ TEMPLATE_DIRS = [
     'C:\\Users\\admin\\Desktop\\Coursework\\mysite\\login\\templates',
     'C:\\Users\\admin\\Desktop\\Coursework\\mysite\\mysite\\templates',
     'C:\\Users\\admin\\Desktop\\Coursework\\mysite\\restaurant\\templates',
-
 ]
 
 MIDDLEWARE = [

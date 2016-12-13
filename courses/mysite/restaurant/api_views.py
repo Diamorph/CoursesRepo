@@ -25,12 +25,34 @@ def Cold_dishes(request):
     args = {}
     if request.method == 'GET':
         return HttpResponse(json.dumps([i.dict() for i in Cold_Dishes.objects.all()]), content_type='application/json')
+
+
         #return render_to_response("Cold_Dishes.html" , {'dishes': Cold_Dishes.objects.all(), 'username':auth.get_user(request).username} , args)
+
+def Labs(request):
+    args = {}
+    if request.method == 'GET':
+        return HttpResponse(json.dumps([i.dict() for i in Labs.objects.all()]), content_type='application/json')
+
+def Lab_id(request, id):
+    args = {}
+    if request.method == 'GET':
+        return HttpResponse(json.dumps(Labs.objects.get(id = int(id)).dict()), content_type='application/json')
 
 def First_courses(request):
     args = {}
     if request.method == 'GET':
-        return render_to_response("First_courses.html", {'first_course': First_Courses.objects.all(),'username':auth.get_user(request).username}, args)
+        return HttpResponse(json.dumps([i.dict() for i in First_Courses.objects.all()]), content_type='application/json')
+    # args = {}
+    # if request.method == 'GET':
+    #     return render_to_response("First_courses.html", {'first_course': First_Courses.objects.all(),'username':auth.get_user(request).username}, args)
+
+
+def First_course_id(request, id):
+    args = {}
+    if request.method == 'GET':
+        return HttpResponse(json.dumps(First_Courses.objects.get(id = int(id)).dict()), content_type='application/json')
+
 
 def Hot_appetizers(request):
     args = {}
