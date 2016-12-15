@@ -1,10 +1,75 @@
 {%extends "main.html" %}
 {% block login %}
-<div class = "large-offset-4 large-3 columns">
+<form class="form-horizontal" enctype="multipart/form-data" method="post" action="/auth/register/">
+ <div class="form-group">
+  <label for="name" class="col-sm-2 control-label">Ім'я:</label>
+  <div class="col-sm-5">
+   <input type="text" class="form-control" required name="name" id="name" placeholder="Ваше ім'я">
+  </div>
+ </div>
+     <div class="form-group">
+  <label for="surname" class="col-sm-2 control-label">Прізвище</label>
+  <div class="col-sm-5">
+   <input type="text" class="form-control" required name="surname" id="surname" placeholder="Ваше прізвище">
+  </div>
+ </div>
+ <div class="form-group">
+  <label for="username" class="col-sm-2 control-label">Логін</label>
+  <div class="col-sm-5">
+   <input type="text" class="form-control" required name="username" id="username" placeholder="Логін">
+  </div>
+ </div>
+     <div class="form-group">
+  <label for="inputPassword" class="col-sm-2 control-label">Пароль</label>
+  <div class="col-sm-5">
+   <input type="password" class="form-control" required name="password" id="inputPassword" placeholder="Пароль">
+  </div>
+ </div>
+
+ <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+   <button type="submit" class="btn btn-success">Підтвердити</button>
+  </div>
+ </div>
+</form>
+
+
+<!--<div class = "large-offset-4 large-3 columns">
 
     <form action = "/auth/register/" method = "POST">
-        {{form}}
+         <title>Registration</title>
+    <div class="center">
+    <form class="form-signin" action="/auth/register/" method="post">
+        <h2 class="form-signin-heading">Registration</h2>
+
+        <div class="large-offset-3 large-6 columns">
+             <label for="name" class="sr-only">Name</label>
+             <input type="text" name="name" id="name" class="form-control" placeholder="name" required autofocus>
+
+             <label for="surname" class="sr-only">Surname</label>
+             <input type="text" name="surname" id="surname" class="form-control" placeholder="surname" required autofocus>
+
+             <label for="username" class="sr-only">Username</label>
+             <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+
+             <label for="inputPassword" class="sr-only">Password</label>
+       <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+         <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        {% if login_error %}
+            <label class="error">{{ login_error }}</label>
+        {% endif %}
+        <button class="btn btn-primary " type="submit">Sign in</button>
+         <div class="label round secondary"><a href="/auth/register/">Registration</a></div>
+      </form>
+
+</div>
+</form>
+
         <input class  ="button" type = "submit"  value = "Реєстрація">
         </form>
-    </div>
+    </div>-->
 {%endblock%}

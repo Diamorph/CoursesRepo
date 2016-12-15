@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import MultiValueField, CharField, ChoiceField, MultiWidget, TextInput, Select
 
 # Create your models here.
 
@@ -49,13 +50,62 @@ class First_Courses(models.Model):
             'id': self.id,
         }
 
-class Labs(models.Model):
-    name = models.CharField(max_length=10)
-    decrib = models.CharField(max_length=1000);
-    res = models.IntegerField(default=0)
+
+# class PhoneWidget(MultiWidget):
+#     def __init__(self, code_length=3, num_length=7, attrs=None):
+#         widgets = [TextInput(attrs={'size': code_length, 'maxlength': code_length}),
+#                    TextInput(attrs={'size': num_length, 'maxlength': num_length})]
+#         super(PhoneWidget, self).__init__(widgets, attrs)
+#
+#     def decompress(self, value):
+#         if value:
+#             return [value.code, value.number]
+#         else:
+#             return ['', '']
+#
+#     def format_output(self, rendered_widgets):
+#         return '+0' + '(' + rendered_widgets[0] + ') - ' + rendered_widgets[1]
+#
+#
+#
+# class PhoneField(MultiValueField):
+#     def __init__(self, code_length, num_length, *args, **kwargs):
+#         list_fields = [CharField(),
+#                        CharField()]
+#         super(PhoneField, self).__init__(list_fields, widget=PhoneWidget(code_length, num_length), *args, **kwargs)
+#
+#     def compress(self, values):
+#         return '+0' + values[0] + values[1]  #Собственно, стандартизация строки номера эстетики ради
+
+class Order(models.Model):
+    name = models.CharField(max_length = 30)
+    surname = models.CharField(max_length = 30)
+    phone = models.CharField(max_length=11)
+    email = models.EmailField(max_length = 50)
+    number = models.IntegerField(default=0)
+    date = models.DateField()
     def dict(self):
-        return{
-            'name': self.name,
-            'decrib': self.decrib,
-            'res': self.res,
+        return {
+        'name': self.name,
+        'surname': self.surname,
+        'phone': self.phone,
+        'email': self.email,
+        'number' : self.number,
+        'date' : self.date,
+        'id' : self.id,
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

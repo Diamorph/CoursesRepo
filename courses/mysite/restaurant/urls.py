@@ -15,6 +15,9 @@ urlpatterns = [
     url(r'^search/$',views.search, name = 'main'),
     url(r'^cold_dish/(\d+)/$', views.ColdDishes_id, name = 'main'),
     url(r'^cold_dish/del/(\d+)/$', views.DelCold_Dishes, name='main'),
+    url(r'^order/$', views.Orders, name='main'),
+    url(r'^orders/$', views.Orders_get, name='main'),
+    url(r'^contacts/$', views.Contact, name='main'),
    # url(r'^hot_appetizers/$', views.hot_view, name = 'main'),
 
     url(r'^$', views.Menu),

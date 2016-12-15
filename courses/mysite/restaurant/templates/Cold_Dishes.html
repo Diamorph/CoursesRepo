@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% load staticfiles %}
 {% block Cold_Dishes %}
+<div id = "new_content">
 {%for cold_dishes in dishes %}
 <!--<p> <img src="{{MEDIA_URL}}{{ article.article_image.url}}"></p>-->
     <p><img src = "{{MEDIA_URL}}{{ cold_dishes.image.url}}"></p>
@@ -15,4 +16,5 @@
         </form>
 
 {% endfor%}
+</div>
 {%endblock%}

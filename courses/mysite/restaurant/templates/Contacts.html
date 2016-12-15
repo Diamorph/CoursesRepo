@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block contacts %}
+<div class="row">
+    <div class="col-sm-4">
+    <p><label>Телефон:098-1111111</label></p>
+    <p><label>Адрес:м.Київ, пров.Ковальского 5</label></p>
+        <form class="form-horizontal" enctype="multipart/form-data" method="get" action="/restaurant/order/">
+    <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+   <button type="submit" class="btn btn-success">Замовити бенкет</button>
+  </div>
+        </div>
+    </form>
+</div>
+        <div class="col-sm-4 ">
+                <h4>Карта</h4>
+<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1270.2638851130173!2d30.45003236544578!3d50.44989610356536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sru!2sua!4v1481743608944"></iframe>
+    </div><!--/.col-sm-4-->
+    </div>
+
+
+{%endblock%}

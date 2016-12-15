@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block orders %}
+{%for i in orders %}
+    <p><label>Замовлення №{{i.id}}</label></p>
+    <p><label>Ім'я:{{i.name}}</label></p></a>
+    <p><label>Прізвище:{{i.surname}}</label></p>
+    <p><label>Телефон:{{i.phone}}</label></p>
+    <p><label>Email:{{i.email}}</label></p>
+    <p><label>Кількість гостей:{{i.number}}</label></p>
+    <p><label>Дата:{{i.date}}</label></p>
+{% endfor%}
+{%endblock%}

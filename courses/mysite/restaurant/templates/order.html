@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block order %}
+<form class="form-horizontal" enctype="multipart/form-data" method="post" action="/restaurant/order/">
+ <div class="form-group">
+  <label for="name" class="col-sm-2 control-label">Ім'я</label>
+  <div class="col-sm-5">
+   <input type="text" class="form-control" required name="name" id="name" placeholder="Ім'я">
+  </div>
+ </div>
+     <div class="form-group">
+  <label for="surname" class="col-sm-2 control-label">Прізвище</label>
+  <div class="col-sm-5">
+   <input type="text" class="form-control" required name="surname" id="surname" placeholder="Прізвище">
+  </div>
+ </div>
+ <div class="form-group">
+  <label for="phone" class="col-sm-2 control-label">Телефон</label>
+  <div class="col-sm-5">
+   <input type="text" class="form-control" required name="phone" id="phone" placeholder="0xx-xxxxxxx">
+  </div>
+ </div>
+     <div class="form-group">
+  <label for="email" class="col-sm-2 control-label">Email</label>
+  <div class="col-sm-8">
+   <input type="text" class="form-control" required name="email" id="email" placeholder="example@mail.com">
+  </div>
+ </div>
+    <div class="form-group">
+  <label for="date" class="col-sm-2 control-label">Дата</label>
+  <div class="col-sm-8">
+   <input type="text" class="form-control" required name="date" id="date" placeholder="date">
+  </div>
+ </div>
+    <div class="form-group">
+  <label for="number" class="col-sm-2 control-label">Кількість гостей</label>
+  <div class="col-sm-8">
+   <input type="text" class="form-control" required name="number" id="number" placeholder="Кількість гостей">
+  </div>
+ </div>
+ <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+   <button type="submit" class="btn btn-success">Підтвердити</button>
+  </div>
+ </div>
+</form>
+<!--
+<form enctype="multipart/form-data"
+        name="test" method="post" action="/restaurant/order/">
+ <p><b>Ім'я:</b><br>
+  <input type="text" size="40" required name="name">
+ </p>
+
+ <p><b>Прізвище:</b>
+ <input type="text" size="40" required name = "surname">
+ </p>
+    <p><b>Телефон:</b>
+ <input type="text" size="40" required name = "phone">
+ </p>
+    <p><b>Email:</b>
+ <input type="text" size="40" required name  ="email">
+ </p>
+    <p><b>Дата:</b>
+ <input type="text" size="40" required name = "date">
+ </p>
+ <p><b>Кількість гостей:</b>
+    <input type="text" size="40" required name = "number">
+     <input type="submit" value="Отправить">
+   </p>
+</form>
+-->
+{%endblock%}

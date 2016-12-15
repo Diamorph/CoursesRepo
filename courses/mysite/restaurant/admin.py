@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cold_Dishes,Hot_Appetizers,Salad , First_Courses, Labs
+from .models import Cold_Dishes,Hot_Appetizers,Salad , First_Courses
 # Register your models here.
 
 
@@ -15,11 +15,8 @@ class Hot_Appetizers_Admin(admin.ModelAdmin):
 class Salad_Admin(admin.ModelAdmin):
     fields = ['name' , 'weight' , 'price' , 'consist' , 'image']
 
-class Labs_Admin(admin.ModelAdmin):
-    fields = ['name', 'decrib', 'res']
 
 admin.site.register(Cold_Dishes , Cold_Dishes_Admin)
 admin.site.register(First_Courses,First_Courses_Admin )
 admin.site.register(Hot_Appetizers, Hot_Appetizers_Admin)
 admin.site.register(Salad, Salad_Admin)
-admin.site.register(Labs,Labs_Admin)
