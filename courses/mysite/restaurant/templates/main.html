@@ -73,7 +73,7 @@
 
 
                 </ul>
-<form class="navbar-search pull-right" action="/restaurant/search/" method = "get" id="form" style="width:200px;">
+<div class="navbar-search pull-right" action="/restaurant/search/" method = "get" id="form" style="width:200px;">
    <div class="input-group">
     <input type="text" class="form-control" placeholder= "Назва страви"  name = "search"  id = "search">
     <div class="input-group-btn">
@@ -82,7 +82,7 @@
       </button>
        </div>
   </div>
-</form>
+</div>
             </div>
 
 </div>
@@ -184,8 +184,9 @@
     <input type="text" size="40" required name="search" id="search">
     <input class  ="button" type = "submit"  value = "Пошук">
 </form>-->
-
-<div class = "main_content" id  = "new_content">
+<div id = "new_content">
+<div class = "main_content">
+     
 {% block login %}
     {%endblock%}
 
@@ -214,13 +215,13 @@
     {%endblock%}
 {% block contacts %}
      {%endblock%}
+</div>
 
-
- </div>
+    </div>
 
     <script src="{% static 'js/jquery.js'%}"></script>
     <script src="{% static 'js/bootstrap.min.js'%}"></script>
-    <script src="{% static 'js/jquery.prettyPhoto.js'%}"></script>
-    <script src="{% static 'js/main.js'%}"></script>
+    
+   
 </body>
 </html>

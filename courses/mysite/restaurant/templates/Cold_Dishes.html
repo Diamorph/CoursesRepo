@@ -4,7 +4,7 @@
 <div id = "new_content">
 {%for cold_dishes in dishes %}
 <!--<p> <img src="{{MEDIA_URL}}{{ article.article_image.url}}"></p>-->
-    <p><img src = "{{MEDIA_URL}}{{ cold_dishes.image.url}}"></p>
+    <p><img src = "{{cold_dishes.image.url}}"></p>
    <a href = "/restaurant/cold_dish/{{cold_dishes.id}}" ><p>Назва :{{cold_dishes.name}}</p></a>
     <p>Склад :{{cold_dishes.consist}}</p>
     <p>Вага:{{cold_dishes.weight}}</p>
