@@ -62,7 +62,7 @@
 <div class="modal-body" >
 
     <div class="center">
-    <form class="form-signin" action="/auth/register/" method="post">
+    <form class="form-signin" action="/auth/register/" method="post">{% csrf_token %}
     <div class="large-offset-3 large-6 columns">
 
         <label for="name" >Ім'я:</label>
@@ -101,7 +101,7 @@
                         <div class="modal-body">
 
 
-<form action  = "/auth/login/" method = "post" role = "form">
+<form action  = "/auth/login/" method = "post" role = "form">{% csrf_token %}
   <div class="form-group">
     <label for="username" >Логін:</label>
     <input type="text" class="form-control" id="" placeholder="Введіть логін" name = "username">

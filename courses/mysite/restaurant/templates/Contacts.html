@@ -5,7 +5,7 @@
     <div class="col-sm-4">
     <p><label>Телефон:098-1111111</label></p>
     <p><label>Адрес:м.Київ, пров.Ковальского 5</label></p>
-        <form class="form-horizontal" enctype="multipart/form-data" method="get" action="/restaurant/order/">
+        <form class="form-horizontal" enctype="multipart/form-data" method="get" action="/restaurant/order/">{% csrf_token %}
     <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
    <button type="submit" class="btn btn-success">Замовити бенкет</button>

@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 {% load staticfiles %}
 {% block add %}
-<form class="form-horizontal" enctype="multipart/form-data" method="post" action="/restaurant/add/">
+<form class="form-horizontal" enctype="multipart/form-data" method="post" action="/restaurant/add/">{% csrf_token %}
  <div class="form-group">
   <label for="name" class="col-sm-2 control-label">Назва</label>
   <div class="col-sm-5">
