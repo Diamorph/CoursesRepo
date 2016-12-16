@@ -74,26 +74,6 @@ def Menu(request):
         #return render_to_response("menu.html", {'username':auth.get_user(request).username}, args)
 
 
-#
-# def search(request):
-#     if request.is_ajax():
-#
-#         rests = Cold_Dishes.objects.none()
-#         flag = True
-#         if request.method == "GET":
-#             if 'search' in request.GET:
-#                 search = request.GET['search'].split()
-#                 for val in search:
-#                     if flag:
-#                         newrests = Cold_Dishes.objects.filter(name__icontains=val)
-#                         if newrests:
-#                             rests = newrests
-#                         else:
-#                             continue
-#                         flag = False
-#         return render(request, "Cold_Dishes.html", {'dishes': rests, 'user' : request.user})
-
-
 def search(request):
     rests = Cold_Dishes.objects.none()
     flag = True

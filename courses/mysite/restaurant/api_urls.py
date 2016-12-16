@@ -4,18 +4,9 @@ from django.contrib import admin
 from restaurant import api_views
 
 urlpatterns = [
-    url(r'^cold_dishes/$', api_views.Cold_dishes, name ='main'),
-    url(r'^cold_dish/(\d+)/$', api_views.Cold_dish_id, name = 'main'),
-    url(r'^hot_appetizers/$', api_views.Hot_appetizers, name ='main'),
-    url(r'^salad/$', api_views.Salad_view, name ='main'),
-    url(r'^first_courses/$', api_views.First_courses, name ='main'),
-    url(r'^first_course/(\d+)/$', api_views.First_course_id, name = 'main'),
-    url(r'^$', api_views.hot_view),
-    url(r'^auth/', include('login.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^restaurant/', include('restaurant.urls')),
-    url(r'^auth/'  ,include('login.urls')),
-    url(r'^', include('restaurant.urls')),
-    url(r'^labs/$', api_views.Labs, name ='main'),
-    url(r'^lab/(\d+)/$', api_views.Lab_id,name = 'main'),
+    url(r'^add/$', api_views.add),
+    url(r'^$', api_views.get),
+    url(r'^(\d+)/$',api_views.Cold_Dishes_id),
+    url(r'^del/(\d+)/$', api_views.delete),
+
 ]

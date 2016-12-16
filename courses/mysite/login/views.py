@@ -5,35 +5,22 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
-# def register(request):
-#      args = {}
-#      args['form'] = UserCreationForm
-#      if request.POST:
-#          newuser_form  =  UserCreationForm(request.POST)
-#          if newuser_form.is_valid():
-#              newuser_form.save()
-#              newuser = auth.authenticate(username = newuser_form.cleaned_data['username'] , password  = newuser_form.cleaned_data['password2'])
-#              auth.login(request , newuser)
-#              newuser.save()
-#              print(newuser)
-#              return redirect('/')
-#          else:
-#              args['form'] =  newuser_form
-#      return render(request , "register.html" , args)
 
 def register(request):
     if request.method == "POST":
-        user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
-        if user is not None:
-            return render_to_response('login.html', {'error': 'We have a user with such name'})
-        else:
-            user = User.objects.create_user(request.POST['username'], request.POST['password'])
-
-            user.save()
-            custom_user = User.objects.create(User=user)
-            custom_user.save()
+        try:
+            user = User.objects.get(username=request.POST['username'])
+            if user is not None:
+                return render(request, 'register.html', {'login_error': 'User with such name is already exists'})
+        except:
+            if request.POST['password'] == request.POST['password2']:
+                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
+                user.save()
+                return login(request)
+            else:
+                return render(request,'register.html', {'pass_error': 'Passwords are not similar'})
     else:
-        return render_to_response('register.html', {})
+        return render(request, 'register.html', {})
 
 
 
@@ -65,9 +52,5 @@ def login(request):
 
 
 def logout(request):
-    #auth.logout(request)
-   # response = redirect('/')
-   # response.set_cookie(request, "You are logout")
-   # return response
     auth.logout(request)
     return redirect('/')

@@ -11,38 +11,14 @@
     <script src  = "{% static '/js/jquery-3.1.1.min.js'%}"></script>
     <script src = "{% static '/js/bootstrap.min.js'%}"></script>
    <script src  = "{% static '/js/my_script.js'%}"></script>
-<!--     <script src="http1s://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   
-<!--
-    <script src = "{% static '/js/my_script.js'%}"></script>
-    <script src = "{% static '/js/bootstrap.min.js'%}"></script> 
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
--->
-
-<!--<link href="{% static '/css/style.css'%}" rel="stylesheet">-->
-
     <meta charset="UTF-8">
     <title>Ресторан</title>
 
 </head>
 <body>
-     <!-- <div class="header">
-    <div id="header-text">
-      <h1>Вітряк</h1>
-      <h2>Швидко. Смачно. Дешево.</h2>
-    </div>
-  </div>-->
-
-
-
-
-
-
         <div class="navbar ">
             <div class="container">
                 <ul class="nav navbar-nav">
@@ -73,9 +49,47 @@
                      {% if user.is_authenticated %}
               <li><button class = "pull-right btn btn-default"><a href = "/auth/logout">Выйти({{user}})</a></button></li>
                 {% else %}
+               <li><button type ="button" class = "pull-right btn btn-default" data-toggle="modal" data-target="#registration" id = "reg">Реєстрація</button>
+<div class="modal fade" id="registration" role="dialog" style = "color:black;">
+<div class="modal-dialog">
+
+
+<div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Реєстрація</h4>
+    </div>
+<div class="modal-body" >
+
+    <div class="center">
+    <form class="form-signin" action="/auth/register/" method="post">
+    <div class="large-offset-3 large-6 columns">
+
+        <label for="name" >Ім'я:</label>
+    <input type="text" name="name" id="name" class="form-control" placeholder="Ім'я" required autofocus>
+        <label for="surname" >Прізвище:</label>
+    <input type="text" name="surname" id="surname" class="form-control" placeholder="Прізвище" required autofocus>
+        <label for="username" >Логін:</label>
+    <input type="text" name="username" id="username" class="form-control" placeholder="Логін" required autofocus>
+        <label for="inputPassword" >Пароль:</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required>
+        <label for="inputPassword2" >Повторіть пароль:</label>
+    <input type="password" id="inputPassword2" name="password2" class="form-control" placeholder="Пароль"required>
+
+    <div class="checkbox">
+
+    </div>
+    <button type="submit" class="btn btn-success">Зареєструватися</button>
+    <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Закрити</button>
+    </div>
+    </form>
+    </div>
+</div>
+</div>
+</div>
+
+</div></li>
                <li><button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#login1">Вхід</button></li>
-
-
                 <div class="modal fade " id="login1" role="dialog"  >
                     <div class="modal-dialog" style = "color:black;">
                       <!-- Modal content-->
@@ -93,7 +107,7 @@
     <input type="text" class="form-control" id="" placeholder="Введіть логін" name = "username">
   </div>
   <div class="form-group ">
-    <label for="password" class = "pull-center">Пароль:</label>
+    <label for="exampleInputPassword1" class = "pull-center">Пароль:</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль" name = "password" >
   </div>
   <button type="submit" class="btn btn-success" value = "vxod">Вхід</button>
@@ -161,68 +175,8 @@
   </a>
 </div>
     </div>
-
-  <!--  <nav role="navigation" class="navbar navbar-default">
-  <div class="navbar-header">
-    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a href="#" class="navbar-brand">Вітряк</a>
-  </div>
-   <div class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Головна</a></li>
-      <li class="active"><a href="/menu">Меню</a></li>
-      <li class="active"><a href="/restaurant/order">Замовити бенкет</a></li>
-        {% if user.is_superuser %}
-      <li class="active"><a href="/restaurant/add">Додати страву</a></li>
-      <li class="active"><a href="/restaurant/orders">Замовлення</a></li>
-        {%endif%}
-    <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                <li><a href = "/auth/logout">Вихід({{user}})</a></li>
-                {% else %}
-                <li><a href = "/auth/login">Вхід</a></li>
-                {% endif %}
-    </ul>   
-      </ul>
-  </div>
-</nav>
-    <div class="main">
-        <form role="form" class="form-inline" method = "get" action="/restaurant/search/">
- <div class="form-group">
-  <input type="text" class="form-control" required name="search" id="search" placeholder="Введіть назву страви">
- </div>
- <button type="submit" class="btn btn-success">Пошук</button>
-</form>
-
-
-
-<!--<form class="form-inline" method = "get" action="/restaurant/search/">
-    <div class="form-group">
-        <label for="search" class="col-sm-2 control-label">Пошук</label>
-  <div class="col-sm-5">
-   <input type="text" class="form-control" required name="search" id="search" placeholder="Введіть назву страви">
-  </div>
-        </div>
-    <div class="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-   <button type="submit" class="btn btn-success">Пошук</button>
-  </div>
- </div>
-</form>-->
-        <!--<form name="sh" method = "get" action="/restaurant/search/">
-    <input type="text" size="40" required name="search" id="search">
-    <input class  ="button" type = "submit"  value = "Пошук">
-</form>-->
 <div id = "new_content">
 <div class = "main_content">
-     
-<!--{% block login %}
-    {%endblock%}-->
 
 {%block Cold_Dishes%}
     {%endblock%}
