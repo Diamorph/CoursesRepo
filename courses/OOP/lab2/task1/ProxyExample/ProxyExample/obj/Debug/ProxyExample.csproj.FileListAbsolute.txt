@@ -1,0 +1,6 @@
+D:\Учоба\2 курс\2 cеместр\ООП\lab2\task1\ProxyExample\ProxyExample\bin\Debug\ProxyExample.exe.config
+D:\Учоба\2 курс\2 cеместр\ООП\lab2\task1\ProxyExample\ProxyExample\obj\Debug\ProxyExample.csprojResolveAssemblyReference.cache
+D:\Учоба\2 курс\2 cеместр\ООП\lab2\task1\ProxyExample\ProxyExample\bin\Debug\ProxyExample.exe
+D:\Учоба\2 курс\2 cеместр\ООП\lab2\task1\ProxyExample\ProxyExample\bin\Debug\ProxyExample.pdb
+D:\Учоба\2 курс\2 cеместр\ООП\lab2\task1\ProxyExample\ProxyExample\obj\Debug\ProxyExample.exe
+D:\Учоба\2 курс\2 cеместр\ООП\lab2\task1\ProxyExample\ProxyExample\obj\Debug\ProxyExample.pdb

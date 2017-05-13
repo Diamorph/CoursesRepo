@@ -1,0 +1,15 @@
+C:\Users\Karina\Documents\Visual Studio 2013\Projects\Patterns Projects\Lab 5\Command\Command\bin\Debug\Command.exe.config
+C:\Users\Karina\Documents\Visual Studio 2013\Projects\Patterns Projects\Lab 5\Command\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
+C:\Users\Karina\Documents\Visual Studio 2013\Projects\Patterns Projects\Lab 5\Command\Command\bin\Debug\Command.exe
+C:\Users\Karina\Documents\Visual Studio 2013\Projects\Patterns Projects\Lab 5\Command\Command\bin\Debug\Command.pdb
+C:\Users\Karina\Documents\Visual Studio 2013\Projects\Patterns Projects\Lab 5\Command\Command\obj\Debug\Command.exe
+C:\Users\Karina\Documents\Visual Studio 2013\Projects\Patterns Projects\Lab 5\Command\Command\obj\Debug\Command.pdb
+C:\Users\admin\Downloads\Lab 5\Command\Command\bin\Debug\Command.exe.config
+C:\Users\admin\Downloads\Lab 5\Command\Command\obj\Debug\Command.exe
+C:\Users\admin\Downloads\Lab 5\Command\Command\obj\Debug\Command.pdb
+D:\Учоба\2 курс\2 cеместр\ООП\Lab 5\Command\Command\bin\Debug\Command.exe.config
+D:\Учоба\2 курс\2 cеместр\ООП\Lab 5\Command\Command\obj\Debug\Command.exe
+D:\Учоба\2 курс\2 cеместр\ООП\Lab 5\Command\Command\obj\Debug\Command.pdb
+D:\Учоба\2 курс\2 cеместр\ООП\Lab 5\Command\Command\bin\Debug\Command.exe
+D:\Учоба\2 курс\2 cеместр\ООП\Lab 5\Command\Command\bin\Debug\Command.pdb
+D:\Учоба\2 курс\2 cеместр\ООП\Lab 5\Command\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache

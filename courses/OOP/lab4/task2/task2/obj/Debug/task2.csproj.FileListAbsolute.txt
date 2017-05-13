@@ -1,0 +1,6 @@
+D:\Учоба\2 курс\2 cеместр\ООП\lab4\task2\task2\bin\Debug\task2.exe.config
+D:\Учоба\2 курс\2 cеместр\ООП\lab4\task2\task2\bin\Debug\task2.exe
+D:\Учоба\2 курс\2 cеместр\ООП\lab4\task2\task2\bin\Debug\task2.pdb
+D:\Учоба\2 курс\2 cеместр\ООП\lab4\task2\task2\obj\Debug\task2.csprojResolveAssemblyReference.cache
+D:\Учоба\2 курс\2 cеместр\ООП\lab4\task2\task2\obj\Debug\task2.exe
+D:\Учоба\2 курс\2 cеместр\ООП\lab4\task2\task2\obj\Debug\task2.pdb

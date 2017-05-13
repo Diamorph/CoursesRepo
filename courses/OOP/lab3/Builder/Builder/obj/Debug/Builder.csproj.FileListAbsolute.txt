@@ -1,0 +1,6 @@
+D:\Учоба\2 курс\2 cеместр\ООП\lab3\Builder\Builder\bin\Debug\Builder.exe.config
+D:\Учоба\2 курс\2 cеместр\ООП\lab3\Builder\Builder\bin\Debug\Builder.exe
+D:\Учоба\2 курс\2 cеместр\ООП\lab3\Builder\Builder\bin\Debug\Builder.pdb
+D:\Учоба\2 курс\2 cеместр\ООП\lab3\Builder\Builder\obj\Debug\Builder.exe
+D:\Учоба\2 курс\2 cеместр\ООП\lab3\Builder\Builder\obj\Debug\Builder.pdb
+D:\Учоба\2 курс\2 cеместр\ООП\lab3\Builder\Builder\obj\Debug\Builder.csprojResolveAssemblyReference.cache
