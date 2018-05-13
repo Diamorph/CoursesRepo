@@ -1,0 +1,120 @@
+1) Найти средний возраст людей в системе
+
+Запит:
+db.users.aggregate([
+    {$group:
+        {_id: "Users", avg_age:{$avg:"$age"}}}
+    ])
+Відповідь:
+{
+    "_id" : "Users",
+    "avg_age" : 30.3886255924171
+}
+2) Найти средний возраст в штате Аляска 
+
+Запит: 
+db.users.aggregate([
+	{$match: {address:{$regex:"Alaska",$options:"$i"}}}, 
+	{$group: {_id: "Users_Alaska", avg_age:{$avg:"$age"}}}
+	])
+Відповідь:
+{
+    "_id" : "Users_Alaska",
+    "avg_age" : 31.5
+}
+3) Начиная от Math.ceil(avg + avg_alaska) найти первого человека с другом по имени Деннис
+
+Запит:
+	db.users.aggregate([
+    {$skip: 62},
+    {$project: {_id: 1, name: 1, address: 1, friends: 1}},
+    {$match: {
+            friends: {$elemMatch: {name: {$regex: "Dennis "}}}
+        }},
+    {$limit: 1}
+    ]);
+Відповідь:
+	{
+    "_id" : ObjectId("5adf3c1544abaca147cdd539"),
+    "name" : "Keller Nixon",
+    "address" : "591 Jamison Lane, Idamay, Minnesota, 3128",
+    "friends" : [ 
+        {
+            "id" : 0,
+            "name" : "Clarissa Jones"
+        }, 
+        {
+            "id" : 1,
+            "name" : "Macias Riley"
+        }, 
+        {
+            "id" : 2,
+            "name" : "Dennis Randolph"
+        }
+    ]
+}
+
+4) Найти людей из того же штата, что и предыдущий человек и посмотреть какой фрукт любят больше всего в этом штате (аггрегация)
+
+Запит: 
+	db.users.aggregate([
+    {$match: {
+            address: {$regex:"Minnesota",$options:"$i"}
+            }},
+    {$sortByCount: "$favoriteFruit"},
+    {$limit : 1}
+]);
+
+Відповідь:
+	{
+    "_id" : "apple",
+    "count" : 10
+}
+
+5) Найти саммого раннего зарегистрировавшегося пользователя с таким любимым фруктом
+
+Запит: 
+	db.users.aggregate([
+    {$project: {_id: 1, name: 1, address: 1, favoriteFruit: 1, registered: 1}},
+    {$match: {favoriteFruit: "apple"}},
+    {$sort: {registered: 1}},
+    {$limit: 1}
+ ]);
+
+Відповідь: 
+	{
+    "_id" : ObjectId("5adf3c1544abaca147cdd568"),
+    "name" : "Magdalena Compton",
+    "address" : "742 Paerdegat Avenue, Oceola, Northern Mariana Islands, 1793",
+    "registered" : "2014-01-02T10:16:56 -02:00",
+    "favoriteFruit" : "apple"
+}
+
+6) Добавить этому пользовелю свойтво: { features: 'first apple eater' } 
+
+Запит:
+	db.users.update(
+    {_id:ObjectId("5adf3c1544abaca147cdd568")}, 
+    {$set:{features: 'first apple eater'}} 
+);
+Відповідь: 
+	Updated 1 existing record(s) in 711ms
+
+
+Запит:
+	db.users.find({_id: ObjectId("5adf3c1544abaca147cdd568")},
+	{name: 1, features: 1});
+
+Відповідь: 
+	{
+    "_id" : ObjectId("5adf3c1544abaca147cdd568"),
+    "name" : "Magdalena Compton",
+    "features" : "first apple eater"
+}
+
+7) Удалить всех любителей клубники (написать количество удаленных пользователей)
+
+Запит:
+	db.users.remove({favoriteFruit:"strawberry"});
+Відповідь:
+	Removed 253 record(s) in 272ms
