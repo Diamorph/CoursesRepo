@@ -1,3 +1,12 @@
+0)Запит:
+mongoimport --db userDB ./users.json
+
+Відпоідь: 
+ no collection specified
+ using filename 'users' as collection
+ connected to: localhost
+ imported 844 documents
+
 1) Найти средний возраст людей в системе
 
 Запит:
